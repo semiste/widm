@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Test</title>
+    <style>
+        body {
+            background: url('https://drive.google.com/uc?export=view&id=1KLfv8-Hmqala9auzGGxY6CfBmEBEI2NJ') no-repeat center center fixed;
+            background-size: cover;
+            margin: 0;
+            overflow: hidden;
+        }
+        iframe {
+            width: 100%;
+            height: 100vh;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <audio id="backgroundMusic" src="https://drive.google.com/uc?export=download&id=1CuQEHcp-LYt2r3khbB4ev6Dt6UaFJolp" autoplay loop></audio>
+    <iframe src="https://sites.google.com/view/tijdvoordetest/home"></iframe>
+    <script>
+        const backgroundMusic = document.getElementById('backgroundMusic');
+        backgroundMusic.volume = 0.5;
+
+        function playSoundEffect() {
+            const soundEffect = new Audio('https://drive.google.com/uc?export=download&id=1udbGFqhllXU7WYXJbBUX27lyeLCSxHEW');
+            soundEffect.play();
+        }
+
+        document.querySelector('iframe').contentWindow.addEventListener('click', playSoundEffect);
+    </script>
+</body>
+</html>
