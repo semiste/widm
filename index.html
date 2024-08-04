@@ -3,37 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Custom Test</title>
-    <style>
-        body {
-            background: url('https://drive.google.com/uc?export=view&id=1KLfv8-Hmqala9auzGGxY6CfBmEBEI2NJ') no-repeat center center fixed;
-            background-size: cover;
-            margin: 0;
-            overflow: hidden;
-        }
-        iframe {
-            width: 640px;
-            height: 954px;
-            border: none;
-            display: block;
-            margin: 0 auto;
-        }
-    </style>
+    <title>Custom Form</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <audio id="backgroundMusic" src="https://drive.google.com/uc?export=download&id=1CuQEHcp-LYt2r3khbB4ev6Dt6UaFJolp" autoplay loop></audio>
-    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSc6ZpsnFJNQQpIMVUvp8HkOBcPsn7NT5oS_ybrgF9i4GutwCA/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
-    <script>
-        const backgroundMusic = document.getElementById('backgroundMusic');
-        backgroundMusic.volume = 0.5;
+    <div class="container">
+        <h1>Custom Form</h1>
+        <form action="https://example.com/submit" method="post">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
 
-        function playSoundEffect() {
-            const soundEffect = new Audio('https://drive.google.com/uc?export=download&id=1udbGFqhllXU7WYXJbBUX27lyeLCSxHEW');
-            soundEffect.play();
-        }
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
 
-        // Play sound effect when the iframe is clicked
-        document.querySelector('iframe').addEventListener('click', playSoundEffect);
-    </script>
+            <label>Gender:</label>
+            <div class="radio-group">
+                <label>
+                    <input type="radio" name="gender" value="male"> Male
+                </label>
+                <label>
+                    <input type="radio" name="gender" value="female"> Female
+                </label>
+                <label>
+                    <input type="radio" name="gender" value="other"> Other
+                </label>
+            </div>
+
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
 </body>
 </html>
