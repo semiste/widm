@@ -6,7 +6,7 @@
     <title>Custom Form with Background Music</title>
     <style>
         body {
-            background: url('https://drive.google.com/uc?export=view&id=1KLfv8-Hmqala9auzGGxY6CfBmEBEI2NJ') no-repeat center center fixed;
+            background: url('https://raw.githubusercontent.com/your-username/your-repo/main/background-image.jpg') no-repeat center center fixed;
             background-size: cover;
             margin: 0;
             font-family: Arial, sans-serif;
@@ -47,13 +47,13 @@
     </style>
 </head>
 <body>
-    <audio id="backgroundMusic" src="https://drive.google.com/uc?export=download&id=1CuQEHcp-LYt2r3khbB4ev6Dt6UaFJolp" autoplay loop></audio>
+    <audio id="backgroundMusic" src="https://raw.githubusercontent.com/your-username/your-repo/main/background-music.mp3" autoplay loop></audio>
     <div class="container">
         <form id="customForm">
             <div class="question active" id="question1">
-                <h2>Question 1</h2>
-                <input type="text" name="answer1" required>
-                <button type="button" onclick="nextQuestion(2)">Next</button>
+                <h2>What is your name?</h2>
+                <input type="text" id="name" name="name" required>
+                <button type="button" onclick="startTimer(); showQuestion(2)">Next</button>
             </div>
             <div class="question" id="question2">
                 <h2>Question 2</h2>
@@ -70,6 +70,8 @@
         </form>
     </div>
     <script>
+        let startTime = 0;
+
         function showQuestion(questionNumber) {
             document.querySelectorAll('.question').forEach((element) => {
                 element.classList.remove('active');
@@ -85,9 +87,28 @@
             showQuestion(prev);
         }
 
+        function startTimer() {
+            startTime = Date.now();
+        }
+
         function submitForm() {
-            alert('Form submitted!');
-            // Implement form submission logic here
+            const endTime = Date.now();
+            const elapsedTime = (endTime - startTime) / 1000; // Time in seconds
+            alert(`Form submitted! Time taken: ${elapsedTime} seconds`);
+
+            // Collect form data
+            const formData = new FormData(document.getElementById('customForm'));
+            const data = {};
+            formData.forEach((value, key) => { data[key] = value });
+
+            // Export data to a file or service
+            exportData(data);
+        }
+
+        function exportData(data) {
+            // Example: Send data to a service like Google Sheets or GitHub
+            console.log('Data to be exported:', data);
+            // Implement your data export logic here
         }
     </script>
 </body>
