@@ -31,33 +31,35 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    function displayQuestions(questions) {
-        const container = document.getElementById('question-form');
-        container.innerHTML = '';
+function displayQuestions(questions) {
+    const container = document.getElementById('question-form');
+    container.innerHTML = '';
 
-        questions.forEach((question, index) => {
-            const questionDiv = document.createElement('div');
-            questionDiv.className = 'question';
-            questionDiv.id = `question-${index}`;
-            questionDiv.style.display = index === 0 ? 'block' : 'none';
+    questions.forEach((question, index) => {
+        const questionDiv = document.createElement('div');
+        questionDiv.className = 'question';
+        questionDiv.id = `question-${index}`;
+        questionDiv.style.display = index === 0 ? 'block' : 'none';
 
-            const questionHTML = `
-                <div class="question-box">
-                    <h2>${question.text}</h2>
-                    <div class="question-options">
-                        ${createAnswerButtons(question.options)}
-                    </div>
+        const questionHTML = `
+            <h2>${question.text}</h2>
+            ${question.options.map((option, i) => `
+                <div class="choice-button button-position" data-answer="${option}">
+                    <img src="resources/Button.png" class="button-img" data-state="default">
+                    <span>${option}</span>
                 </div>
-            `;
+            `).join('')}
+        `;
 
-            questionDiv.innerHTML = questionHTML;
-            container.appendChild(questionDiv);
-        });
+        questionDiv.innerHTML = questionHTML;
+        container.appendChild(questionDiv);
+    });
 
-        document.querySelectorAll('.choice-button').forEach(button => {
-            button.addEventListener('click', handleChoiceClick);
-        });
-    }
+    document.querySelectorAll('.choice-button').forEach(button => {
+        button.addEventListener('click', handleChoiceClick);
+    });
+}
+
 
     function createAnswerButtons(options) {
         const numOptions = options.length;
