@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const nameQuestion = document.getElementById('start-screen');
     const questionForm = document.getElementById('question-screen');
     const delayBeforeNextQuestion = 1000; // Adjust delay to match the GIF animation time
-    const googleWebAppURL = 'https://script.google.com/macros/s/AKfycbztEyQjKgpXJlc9N3lWLslJ8M9eL50thODiqq0NhrHN2FKYGf9M3Z0154_1bSohtptK/exec'; // Replace with your Google Apps Script Web App URL
+    const googleWebAppURL = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec'; // Replace with your Google Apps Script Web App URL
 
     let startTime;
     let answers = []; // To store answers
@@ -64,24 +64,14 @@ document.addEventListener('DOMContentLoaded', function () {
         const column1 = [];
         const column2 = [];
 
-        if (numOptions <= 2) {
-            // Case for 1 or 2 options
-            column1.push(options[0]);
-            if (numOptions > 1) column2.push(options[1]);
-        } else if (numOptions <= 4) {
-            // Case for 3 or 4 options
-            column1.push(options[0]);
-            column1.push(options[1]);
-            if (numOptions > 2) column2.push(options[2]);
-            if (numOptions > 3) column2.push(options[3]);
-        } else if (numOptions <= 6) {
-            // Case for 5 or 6 options
-            column1.push(options[0]);
-            column1.push(options[1]);
-            column1.push(options[2]);
-            if (numOptions > 3) column2.push(options[3]);
-            if (numOptions > 4) column2.push(options[4]);
-            if (numOptions > 5) column2.push(options[5]);
+        // Determine how many answers go in each column
+        const midPoint = Math.ceil(numOptions / 2);
+        for (let i = 0; i < numOptions; i++) {
+            if (i < midPoint) {
+                column1.push(options[i]);
+            } else {
+                column2.push(options[i]);
+            }
         }
 
         return `
