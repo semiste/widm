@@ -3,19 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz App</title>
+    <title>Quiz Application</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <audio id="background-music" src="resources/background-music.mp3" loop></audio>
-    <div id="name-question">
-        <input type="text" id="name" placeholder="Enter your name">
-        <button id="start-button">Start</button>
+    <div id="start-screen" class="screen">
+        <img src="resources/background_front.png" alt="Background Front" class="background-image">
+        <div class="input-container">
+            <h1>Enter Your Name</h1>
+            <input type="text" id="name" placeholder="Your Name">
+            <button id="start-button">Start</button>
+        </div>
     </div>
-    <div id="question-form" style="display: none;">
-        <!-- Questions will be dynamically injected here -->
+
+    <div id="question-screen" class="screen" style="display: none;">
+        <div id="question-form"></div>
     </div>
-    <div id="timestamp"></div>
+
+    <audio id="background-music" src="resources/background_music.mp3" preload="auto"></audio>
     <script src="script.js"></script>
 </body>
 </html>
