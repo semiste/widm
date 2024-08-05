@@ -135,3 +135,34 @@ function submitFormData() {
 
     updateTimestamp(); // Initial timestamp update
 });
+
+document.getElementById('startButton').addEventListener('click', function() {
+    let name = document.getElementById('nameInput').value;
+    let answers = []; // Collect answers
+
+    let payload = {
+        name: name,
+        answers: answers
+    };
+
+    fetch('YOUR_WEB_APP_URL', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === 'success') {
+            console.log('Success:', data);
+        } else {
+            console.error('Error:', data.message);
+            alert('There was an error submitting your test: ' + data.message);
+        }
+    })
+    .catch((error) => {
+        console.error('Fetch Error:', error);
+        alert('There was an error submitting your test.');
+    });
+});
