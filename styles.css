@@ -32,6 +32,12 @@ body {
     margin: 10px 0;
 }
 
+#timestamp {
+    color: white;
+    font-size: 0.8em;
+    margin-top: 20px;
+}
+
 #question-form {
     display: none;
 }
