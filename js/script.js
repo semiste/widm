@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const questionForm = document.getElementById('question-form');
     const timestampElement = document.getElementById('timestamp');
     const delayBeforeNextQuestion = 1000; // Adjust delay to match the GIF animation time
-    const googleWebAppURL = 'https://script.google.com/macros/s/AKfycbwYALiVz5lqQWp-j-MKaWmtnliyZIPt2q8E84jYP5t8Nu9j2oj8Bt4WOV0ntjKOQeYN/exec'; // Replace with your Google Apps Script Web App URL
+    const googleWebAppURL = 'https://script.google.com/macros/s/AKfycbw9Iu5m1_FrPiLfXlNd6h4CXKDhs9GNnUBBC0zTaWTRGSC_ElLnGpUVWSldMqJj6LNf/exec'; // Replace with your Google Apps Script Web App URL
 
     let startTime;
 
@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function () {
             .then(data => {
                 const lastCommitDate = new Date(data[0].commit.committer.date);
                 const options = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' };
-                timestampElement.textContent = Last build time: ${lastCommitDate.toLocaleDateString('en-US', options)};
+                timestampElement.textContent = `Last build time: ${lastCommitDate.toLocaleDateString('en-US', options)}`;
             })
             .catch(error => {
                 console.error('Error fetching last commit time:', error);
@@ -52,21 +52,21 @@ document.addEventListener('DOMContentLoaded', function () {
         questions.forEach((question, index) => {
             const questionDiv = document.createElement('div');
             questionDiv.className = 'question';
-            questionDiv.id = question-${index};
+            questionDiv.id = `question-${index}`;
             questionDiv.style.display = index === 0 ? 'block' : 'none';
 
-            const questionHTML = 
+            const questionHTML = `
                 <img src="resources/background_exam.png" alt="Background Exam" class="background-image">
                 <div class="question-container">
                     <h2 style="color: white;">${question.text}</h2>
-                    ${question.options.map(option => 
+                    ${question.options.map(option => `
                         <button class="choice-button" data-answer="${option}">
                             <img src="resources/Button.png" class="button-img" data-state="default">
                             <span>${option}</span>
                         </button>
-                    ).join('')}
+                    `).join('')}
                 </div>
-            ;
+            `;
 
             questionDiv.innerHTML = questionHTML;
             container.appendChild(questionDiv);
@@ -116,11 +116,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(formData)
-        }).then(response => response.text())
+        })
+        .then(response => response.text())
         .then(text => {
             alert('Test submitted successfully!');
             console.log(text);
-        }).catch(error => {
+        })
+        .catch(error => {
             console.error('Error:', error);
             alert('There was an error submitting your test.');
         });
@@ -140,5 +142,4 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     updateTimestamp(); // Initial timestamp update
-
 });
