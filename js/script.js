@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const questionForm = document.getElementById('question-form');
     const timestampElement = document.getElementById('timestamp');
     const delayBeforeNextQuestion = 1000; // Adjust delay to match the GIF animation time
-    const googleWebAppURL = 'https://script.google.com/macros/s/AKfycbw9Iu5m1_FrPiLfXlNd6h4CXKDhs9GNnUBBC0zTaWTRGSC_ElLnGpUVWSldMqJj6LNf/exec'; // Replace with your Google Apps Script Web App URL
+    const googleWebAppURL = 'https://script.google.com/macros/s/AKfycbxh65DBy8ZuLr27bwjkJCWLkUt7KdZ_m7YTYBLE8LM/dev'; // Replace with your Google Apps Script Web App URL
 
     let startTime;
 
@@ -139,6 +139,7 @@ function submitFormData() {
         alert('There was an error submitting your test.');
     });
 }
+
 
     startButton.addEventListener('click', function () {
         const name = document.getElementById('name').value;
