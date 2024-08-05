@@ -3,7 +3,15 @@ document.addEventListener('DOMContentLoaded', function () {
     const startButton = document.getElementById('start-button');
     const nameQuestion = document.getElementById('name-question');
     const questionForm = document.getElementById('question-form');
+    const timestampElement = document.getElementById('timestamp');
     const delayBeforeNextQuestion = 1000; // Adjust delay to match the GIF animation time
+
+    // Update timestamp on page load
+    function updateTimestamp() {
+        const now = new Date();
+        const options = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+        timestampElement.textContent = `Last updated: ${now.toLocaleDateString('en-US', options)}`;
+    }
 
     // Load questions from JSON
     fetch('questions.json')
@@ -108,8 +116,11 @@ document.addEventListener('DOMContentLoaded', function () {
             nameQuestion.style.display = 'none';
             questionForm.style.display = 'block';
             startBackgroundMusic(); // Start background music
+            updateTimestamp(); // Update timestamp on start
         } else {
             alert('Please enter your name.');
         }
     });
+
+    updateTimestamp(); // Initial timestamp update
 });
