@@ -4,6 +4,23 @@
         "options": ["Red", "Blue", "Green", "Yellow"]
     },
     {
+        "text": "What is your favorite 1?",
+        "options": ["Red", "Blue", "Green1", "Ye1llow"]
+    },
+    {
+        "text": "What is your favorite 2?",
+        "options": ["R1ed", "Bl1", "Green", "Yellow"]
+    },
+    {
+        "text": "What is your favorite 3?",
+        "options": ["Re1d", "Blue", "Green", "Yellow"]
+    },
+    {
+        "text": "What is your favorite 4?",
+        "options": ["Re1d", "B1ue", "Green", "Yell1ow"]
+    },
+
+    {
         "text": "What is your favorite animal?",
         "options": ["Dog", "Cat", "Bird", "Fish"]
     }
