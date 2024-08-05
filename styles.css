@@ -35,7 +35,7 @@ html, body {
 }
 
 .question-box {
-    background-color: rgba(0, 0, 0, 0.8); /* Opaque background for the question box */
+    background-color: transparent; /* Invisible background for the question box */
     padding: 20px;
     border-radius: 10px;
     width: 80%;
@@ -84,5 +84,19 @@ html, body {
     .choice-button img {
         margin-right: 0;
         margin-bottom: 5px;
+    }
+}
+
+/* Force landscape orientation */
+@media screen and (orientation:portrait) {
+    body {
+        transform: rotate(90deg);
+        transform-origin: left top;
+        width: 100vh;
+        height: 100vw;
+        overflow-x: hidden;
+        position: absolute;
+        top: 100%;
+        left: 0;
     }
 }
