@@ -79,6 +79,7 @@ html, body {
     display: flex;
     justify-content: space-between; /* Distribute space between columns */
     flex-wrap: wrap;
+    align-items: flex-start; /* Align items to the top */
 }
 
 .option-row {
