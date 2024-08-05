@@ -7,6 +7,9 @@ document.addEventListener('DOMContentLoaded', function () {
     const delayBeforeNextQuestion = 1000; // Adjust delay to match the GIF animation time
     const googleWebAppURL = 'https://script.google.com/macros/s/AKfycbwYALiVz5lqQWp-j-MKaWmtnliyZIPt2q8E84jYP5t8Nu9j2oj8Bt4WOV0ntjKOQeYN/exec'; // Replace with your Google Apps Script Web App URL
 
+    let startTime; // Variable to store the start time
+    let endTime;   // Variable to store the end time
+
     // Update timestamp with the last commit time from GitHub API
     function updateTimestamp() {
         fetch('https://api.github.com/repos/semiste/widm/commits?per_page=1')
@@ -96,31 +99,55 @@ document.addEventListener('DOMContentLoaded', function () {
         }, delayBeforeNextQuestion);
     }
 
-function submitFormData() {
-    const formData = {
-        name: document.getElementById('name').value,
-        answers: []
-    };
+    function startTimer() {
+        startTime = new Date();
+    }
 
-    document.querySelectorAll('.choice-button.selected').forEach(button => {
-        formData.answers.push(button.dataset.answer);
-    });
+    function stopTimer() {
+        endTime = new Date();
+    }
 
-    fetch('https://script.google.com/macros/s/AKfycbxh65DBy8ZuLr27bwjkJCWLkUt7KdZ_m7YTYBLE8LM/dev', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-    }).then(response => response.text())
-    .then(text => {
-        alert('Test submitted successfully!');
-        console.log(text);
-    }).catch(error => {
-        console.error('Error:', error);
-        alert('There was an error submitting your test.');
-    });
-}
+    function calculateTimeTaken() {
+        if (startTime && endTime) {
+            const timeDiff = endTime - startTime; // Time difference in milliseconds
+            const minutes = Math.floor(timeDiff / 60000);
+            const seconds = ((timeDiff % 60000) / 1000).toFixed(0);
+            return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+        }
+        return '0:00';
+    }
+
+    function submitFormData() {
+        stopTimer(); // Stop the timer when submitting the form
+
+        const name = document.getElementById('name').value;
+        const answers = [];
+        document.querySelectorAll('.choice-button.selected').forEach(button => {
+            answers.push(button.dataset.answer);
+        });
+
+        const formData = {
+            name: name,
+            answers: answers,
+            timeTaken: calculateTimeTaken()
+        };
+
+        fetch(googleWebAppURL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData),
+        }).then(response => response.text())
+        .then(text => {
+            alert('Test submitted successfully!');
+            console.log(text);
+        }).catch(error => {
+            console.error('Error:', error);
+            alert('There was an error submitting your test.');
+        });
+    }
+
     startButton.addEventListener('click', function () {
         const name = document.getElementById('name').value;
         if (name.trim()) {
@@ -128,41 +155,11 @@ function submitFormData() {
             questionForm.style.display = 'block';
             startBackgroundMusic(); // Start background music
             updateTimestamp(); // Update timestamp on start
+            startTimer(); // Start the timer
         } else {
             alert('Please enter your name.');
         }
     });
 
     updateTimestamp(); // Initial timestamp update
-});
-
-document.getElementById('startButton').addEventListener('click', function() {
-    let name = document.getElementById('nameInput').value;
-    let answers = []; // Collect answers
-
-    let payload = {
-        name: name,
-        answers: answers
-    };
-
-    fetch('YOUR_WEB_APP_URL', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(payload)
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.status === 'success') {
-            console.log('Success:', data);
-        } else {
-            console.error('Error:', data.message);
-            alert('There was an error submitting your test: ' + data.message);
-        }
-    })
-    .catch((error) => {
-        console.error('Fetch Error:', error);
-        alert('There was an error submitting your test.');
-    });
 });
