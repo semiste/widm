@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const nameQuestion = document.getElementById('start-screen');
     const questionForm = document.getElementById('question-screen');
     const delayBeforeNextQuestion = 1000; // Adjust delay to match the GIF animation time
-    const googleWebAppURL = 'https://script.google.com/macros/s/AKfycbztEyQjKgpXJlc9N3lWLslJ8M9eL50thODiqq0NhrHN2FKYGf9M3Z0154_1bSohtptK/exec'; // Replace with your Google Apps Script Web App URL
+    const googleWebAppURL = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec'; // Replace with your Google Apps Script Web App URL
 
     let startTime;
     let answers = []; // To store answers
@@ -44,12 +44,9 @@ document.addEventListener('DOMContentLoaded', function () {
             const questionHTML = `
                 <div class="question-container">
                     <h2>${question.text}</h2>
-                    ${question.options.map((option, optIndex) => `
-                        <button class="choice-button" data-answer="${String.fromCharCode(65 + optIndex)}">
-                            <img src="resources/Button.png" class="button-img" data-state="default">
-                            <span>${option}</span>
-                        </button>
-                    `).join('')}
+                    <div class="answers">
+                        ${getFormattedOptions(question.options)}
+                    </div>
                 </div>
             `;
 
@@ -62,6 +59,26 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
         adjustButtonTextSize(); // Adjust the font size of answer texts
+    }
+
+    function getFormattedOptions(options) {
+        const columns = Math.ceil(options.length / 2);
+        let html = '';
+        for (let i = 0; i < columns; i++) {
+            html += '<div class="option-row">';
+            for (let j = i; j < options.length; j += columns) {
+                const optIndex = j;
+                const option = options[optIndex];
+                html += `
+                    <button class="choice-button" data-answer="${String.fromCharCode(65 + optIndex)}">
+                        <img src="resources/Button.png" class="button-img" data-state="default">
+                        <span>${option}</span>
+                    </button>
+                `;
+            }
+            html += '</div>';
+        }
+        return html;
     }
 
     function handleChoiceClick(event) {
