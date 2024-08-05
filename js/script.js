@@ -61,22 +61,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function createAnswerButtons(options) {
         const numOptions = options.length;
-        const column1 = [];
-        const column2 = [];
-
-        // Determine how many answers go in each column
         const midPoint = Math.ceil(numOptions / 2);
-        for (let i = 0; i < numOptions; i++) {
-            if (i < midPoint) {
-                column1.push(options[i]);
-            } else {
-                column2.push(options[i]);
-            }
-        }
+        const column1 = options.slice(0, midPoint);
+        const column2 = options.slice(midPoint);
 
         return `
             ${column1.length > 0 ? `
-                <div class="column">
+                <div class="column column-left">
                     ${column1.map((option, index) => `
                         <button class="choice-button" data-answer="${String.fromCharCode(65 + index)}">
                             <img src="resources/Button.png" class="button-img" data-state="default">
@@ -86,7 +77,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 </div>
             ` : ''}
             ${column2.length > 0 ? `
-                <div class="column">
+                <div class="column column-right">
                     ${column2.map((option, index) => `
                         <button class="choice-button" data-answer="${String.fromCharCode(65 + column1.length + index)}">
                             <img src="resources/Button.png" class="button-img" data-state="default">
@@ -136,7 +127,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 'Content-Type': 'text/plain;charset=utf-8'
             },
             body: JSON.stringify(formData),
-            redirect: 'follow'  // Important for handling redirects
+            redirect: 'follow'
         }).then(response => response.text())
         .then(text => {
             alert('Test submitted successfully!');
