@@ -49,7 +49,7 @@ html, body {
     color: white; /* Set font color to white */
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between; /* Distribute buttons evenly */
+    justify-content: space-between; /* Distribute columns evenly */
 }
 
 .column {
@@ -70,10 +70,9 @@ html, body {
 }
 
 .choice-button img {
-    width: 25px; /* Reduce the size of the button image */
+    width: 50px; /* Adjust width of the button image */
     height: auto;
-    margin-left: 10px; /* Space between the image and the text */
-    vertical-align: middle; /* Align image with text */
+    margin-right: 10px; /* Space between the image and the text */
 }
 
 .choice-button span {
@@ -89,7 +88,7 @@ html, body {
     }
 
     .choice-button img {
-        margin-left: 0;
+        margin-right: 0;
         margin-bottom: 5px;
     }
 }
