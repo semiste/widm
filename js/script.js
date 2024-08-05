@@ -60,23 +60,52 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function createAnswerButtons(options) {
-        const columns = [[], []]; // Array for two columns
+        const numOptions = options.length;
+        const column1 = [];
+        const column2 = [];
 
-        options.forEach((option, index) => {
-            const column = index % 2; // Distribute options between two columns
-            columns[column].push(option);
-        });
+        if (numOptions <= 2) {
+            // Case for 1 or 2 options
+            column1.push(options[0]);
+            if (numOptions > 1) column2.push(options[1]);
+        } else if (numOptions <= 4) {
+            // Case for 3 or 4 options
+            column1.push(options[0]);
+            column1.push(options[1]);
+            if (numOptions > 2) column2.push(options[2]);
+            if (numOptions > 3) column2.push(options[3]);
+        } else if (numOptions <= 6) {
+            // Case for 5 or 6 options
+            column1.push(options[0]);
+            column1.push(options[1]);
+            column1.push(options[2]);
+            if (numOptions > 3) column2.push(options[3]);
+            if (numOptions > 4) column2.push(options[4]);
+            if (numOptions > 5) column2.push(options[5]);
+        }
 
-        return columns.map((buttons, colIndex) => `
-            <div class="column">
-                ${buttons.map((option, optIndex) => `
-                    <button class="choice-button" data-answer="${String.fromCharCode(65 + optIndex)}">
-                        <img src="resources/Button.png" class="button-img" data-state="default">
-                        <span>${option}</span>
-                    </button>
-                `).join('')}
-            </div>
-        `).join('');
+        return `
+            ${column1.length > 0 ? `
+                <div class="column">
+                    ${column1.map((option, index) => `
+                        <button class="choice-button" data-answer="${String.fromCharCode(65 + index)}">
+                            <img src="resources/Button.png" class="button-img" data-state="default">
+                            <span>${option}</span>
+                        </button>
+                    `).join('')}
+                </div>
+            ` : ''}
+            ${column2.length > 0 ? `
+                <div class="column">
+                    ${column2.map((option, index) => `
+                        <button class="choice-button" data-answer="${String.fromCharCode(65 + column1.length + index)}">
+                            <img src="resources/Button.png" class="button-img" data-state="default">
+                            <span>${option}</span>
+                        </button>
+                    `).join('')}
+                </div>
+            ` : ''}
+        `;
     }
 
     function handleChoiceClick(event) {
