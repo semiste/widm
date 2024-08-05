@@ -29,8 +29,16 @@ document.addEventListener('DOMContentLoaded', function () {
             .then(response => response.json())
             .then(data => {
                 const lastCommitDate = new Date(data[0].commit.committer.date);
-                const options = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' };
-                timestampElement.textContent = `Last build time: ${lastCommitDate.toLocaleDateString('en-US', options)}`;
+                const options = { 
+                    year: 'numeric', 
+                    month: 'long', 
+                    day: 'numeric', 
+                    hour: '2-digit', 
+                    minute: '2-digit', 
+                    second: '2-digit',
+                    timeZoneName: 'short' // Include time zone for better clarity
+                };
+                timestampElement.textContent = `Last build time: ${lastCommitDate.toLocaleString('en-US', options)}`;
             })
             .catch(error => {
                 console.error('Error fetching last commit time:', error);
