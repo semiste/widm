@@ -17,12 +17,10 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
+    width: 100%;
 }
 
 #name-question {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     background-color: black;
     padding: 20px;
     border-radius: 10px;
@@ -44,6 +42,7 @@ body {
 .question {
     display: none;
     text-align: center;
+    width: 100%;
 }
 
 .background-image {
@@ -67,11 +66,10 @@ body {
     background: none;
     cursor: pointer;
     position: relative;
-    width: 45%;
 }
 
 .choice-button img.button-img {
-    width: 100%; /* Adjust as needed */
+    width: 100px; /* Adjust size as needed */
     height: auto;
 }
 
