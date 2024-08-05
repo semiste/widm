@@ -35,27 +35,29 @@ html, body {
 }
 
 .question-box {
-    background-color: rgba(0, 0, 0, 0.8); /* Opaque background for the question box */
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background for question box */
     padding: 20px;
     border-radius: 10px;
     width: 80%;
     max-width: 800px;
-    margin: 0 auto;
     color: white; /* Set font color to white */
 }
 
 #question-form {
-    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Distribute buttons evenly */
+    gap: 20px; /* Space between buttons */
     position: relative;
     z-index: 1; /* Ensure it appears above the background image */
     color: white; /* Set font color to white */
 }
 
 .choice-button {
-    display: inline-flex;
+    display: flex;
     align-items: center;
-    margin: 10px;
-    padding: 10px;
+    width: 45%; /* Make buttons take up roughly half the width of the container */
+    margin-bottom: 10px;
     border: none;
     background: transparent;
     cursor: pointer;
@@ -64,7 +66,7 @@ html, body {
 }
 
 .choice-button img {
-    width: 50px; /* Reduce the size of the button image */
+    width: 25px; /* Reduce the size of the button image */
     height: auto;
     margin-right: 10px; /* Space between the image and the text */
     vertical-align: middle; /* Align image with text */
@@ -79,6 +81,7 @@ html, body {
     .choice-button {
         flex-direction: column; /* Stack image and text vertically on small screens */
         align-items: center;
+        width: 100%;
     }
 
     .choice-button img {
