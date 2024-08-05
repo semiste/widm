@@ -38,6 +38,7 @@ html, body {
     text-align: center;
     position: relative;
     z-index: 1; /* Ensure it appears above the background image */
+    color: white; /* Set font color to white */
 }
 
 .choice-button {
@@ -48,14 +49,19 @@ html, body {
     background: transparent;
     cursor: pointer;
     position: relative;
+    color: white; /* Set font color to white */
+    font-size: 1.2em; /* Slightly increase font size */
 }
 
 .choice-button img {
-    display: block;
+    display: inline-block;
+    width: 50px; /* Reduce the size of the button image */
+    height: auto;
+    margin-right: 10px; /* Space between the image and the text */
+    vertical-align: middle; /* Align image with text */
 }
 
 .choice-button span {
-    display: block;
-    margin-top: 5px;
-    color: white;
+    display: inline-block;
+    vertical-align: middle; /* Align text with image */
 }
