@@ -67,12 +67,10 @@ body {
     background: none;
     cursor: pointer;
     position: relative;
-    width: 100px; /* Adjust size as needed */
-    height: auto;
 }
 
 .choice-button img.button-img {
-    width: 100%; /* Adjust size as needed */
+    width: 100px; /* Adjust size as needed */
     height: auto;
 }
 
