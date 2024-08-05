@@ -34,6 +34,16 @@ html, body {
     z-index: 1; /* Ensure it appears above the background image */
 }
 
+.question-box {
+    background-color: rgba(0, 0, 0, 0.8); /* Opaque background for the question box */
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 800px;
+    margin: 0 auto;
+    color: white; /* Set font color to white */
+}
+
 #question-form {
     text-align: center;
     position: relative;
@@ -42,19 +52,18 @@ html, body {
 }
 
 .choice-button {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
     margin: 10px;
     padding: 10px;
     border: none;
     background: transparent;
     cursor: pointer;
-    position: relative;
     color: white; /* Set font color to white */
     font-size: 1.2em; /* Slightly increase font size */
 }
 
 .choice-button img {
-    display: inline-block;
     width: 50px; /* Reduce the size of the button image */
     height: auto;
     margin-right: 10px; /* Space between the image and the text */
@@ -64,4 +73,16 @@ html, body {
 .choice-button span {
     display: inline-block;
     vertical-align: middle; /* Align text with image */
+}
+
+@media (max-width: 600px) {
+    .choice-button {
+        flex-direction: column; /* Stack image and text vertically on small screens */
+        align-items: center;
+    }
+
+    .choice-button img {
+        margin-right: 0;
+        margin-bottom: 5px;
+    }
 }
