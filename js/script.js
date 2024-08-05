@@ -1,15 +1,12 @@
 document.addEventListener('DOMContentLoaded', function () {
     const backgroundMusic = document.getElementById('background-music');
     const startButton = document.getElementById('start-button');
-    const nameInput = document.getElementById('name');
-    const startScreen = document.getElementById('start-screen');
-    const questionScreen = document.getElementById('question-screen');
-    const questionForm = document.getElementById('question-form');
+    const nameQuestion = document.getElementById('start-screen');
+    const questionForm = document.getElementById('question-screen');
+    const delayBeforeNextQuestion = 1000; // Adjust delay to match the GIF animation time
+    const googleWebAppURL = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec'; // Replace with your Google Apps Script Web App URL
 
     let startTime;
-    let questions = [];
-    const delayBeforeNextQuestion = 1000;
-    const googleWebAppURL = 'https://script.google.com/macros/s/AKfycbxn5t7VjmnJAq8Oi-KmY47JJeHtrDC5guVIUEMG9qFCm_Rl6Vu6ASPAzj6E5hcE79W-/exec';
 
     function startTimer() {
         startTime = new Date();
@@ -27,14 +24,16 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function showQuestion(index) {
-        const questionsElements = document.querySelectorAll('.question');
-        questionsElements.forEach((q, i) => {
+        const questions = document.querySelectorAll('.question');
+        questions.forEach((q, i) => {
             q.style.display = i === index ? 'block' : 'none';
         });
     }
 
-    function displayQuestions() {
-        questionForm.innerHTML = '';
+    function displayQuestions(questions) {
+        const container = document.getElementById('question-form');
+        container.innerHTML = '';
+
         questions.forEach((question, index) => {
             const questionDiv = document.createElement('div');
             questionDiv.className = 'question';
@@ -44,10 +43,10 @@ document.addEventListener('DOMContentLoaded', function () {
             const questionHTML = `
                 <img src="resources/background_exam.png" alt="Background Exam" class="background-image">
                 <div class="question-container">
-                    <h2 style="color: white;">${question.text}</h2>
+                    <h2>${question.text}</h2>
                     ${question.options.map(option => `
                         <button class="choice-button" data-answer="${option}">
-                            <img src="resources/Button.png" class="button-img">
+                            <img src="resources/Button.png" class="button-img" data-state="default">
                             <span>${option}</span>
                         </button>
                     `).join('')}
@@ -55,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function () {
             `;
 
             questionDiv.innerHTML = questionHTML;
-            questionForm.appendChild(questionDiv);
+            container.appendChild(questionDiv);
         });
 
         document.querySelectorAll('.choice-button').forEach(button => {
@@ -66,17 +65,20 @@ document.addEventListener('DOMContentLoaded', function () {
     function handleChoiceClick(event) {
         const button = event.currentTarget;
         const img = button.querySelector('.button-img');
-        img.src = 'resources/aButton.gif';
+        img.src = 'resources/aButton.gif'; // Change to gif image
         
+        // Play sound effect
         const clickSound = new Audio('resources/klik.wav');
         clickSound.play();
 
+        // Delay before showing the next question
         setTimeout(() => {
-            img.src = 'resources/Button.png';
+            img.src = 'resources/Button.png'; // Change back to default image
             const currentQuestionIndex = Array.from(button.closest('.question').parentElement.children).indexOf(button.closest('.question'));
             if (currentQuestionIndex + 1 < document.querySelectorAll('.question').length) {
                 showQuestion(currentQuestionIndex + 1);
             } else {
+                // Handle form submission here
                 submitFormData();
             }
         }, delayBeforeNextQuestion);
@@ -84,9 +86,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function submitFormData() {
         const formData = {
-            name: nameInput.value,
+            name: document.getElementById('name').value,
             answers: [],
-            timeTaken: getTimeTaken()
+            timeTaken: getTimeTaken() // Get the time taken to complete the test
         };
 
         document.querySelectorAll('.choice-button.selected').forEach(button => {
@@ -110,21 +112,21 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     startButton.addEventListener('click', function () {
-        const name = nameInput.value;
+        const name = document.getElementById('name').value;
         if (name.trim()) {
-            startScreen.style.display = 'none';
-            questionScreen.style.display = 'block';
-            startBackgroundMusic();
-            startTimer();
-            
+            nameQuestion.style.display = 'none';
+            questionForm.style.display = 'block';
+            startBackgroundMusic(); // Start background music
+            startTimer(); // Start timer
+
             fetch('questions.json')
                 .then(response => response.json())
                 .then(data => {
-                    questions = data;
-                    displayQuestions();
+                    displayQuestions(data);
                 })
                 .catch(error => {
-                    console.error('Error fetching questions:', error);
+                    console.error('Error loading questions:', error);
+                    alert('Error loading questions.');
                 });
         } else {
             alert('Please enter your name.');
