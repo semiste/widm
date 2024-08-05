@@ -8,9 +8,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Update timestamp on page load
     function updateTimestamp() {
+        const buildTime = document.querySelector('meta[name="build-time"]').getAttribute('content');
         const now = new Date();
         const options = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' };
-        timestampElement.textContent = `Last updated: ${now.toLocaleDateString('en-US', options)}`;
+        timestampElement.textContent = `Last build time: ${new Date(buildTime).toLocaleDateString('en-US', options)}`;
     }
 
     // Load questions from JSON
