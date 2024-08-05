@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const nameQuestion = document.getElementById('start-screen');
     const questionForm = document.getElementById('question-screen');
     const delayBeforeNextQuestion = 1000; // Adjust delay to match the GIF animation time
-    const googleWebAppURL = 'https://script.google.com/macros/s/AKfycbztEyQjKgpXJlc9N3lWLslJ8M9eL50thODiqq0NhrHN2FKYGf9M3Z0154_1bSohtptK/exec'; // Replace with your Google Apps Script Web App URL
+    const googleWebAppURL = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec'; // Replace with your Google Apps Script Web App URL
 
     let startTime;
     let answers = []; // To store answers
@@ -60,6 +60,8 @@ document.addEventListener('DOMContentLoaded', function () {
         document.querySelectorAll('.choice-button').forEach(button => {
             button.addEventListener('click', handleChoiceClick);
         });
+
+        adjustButtonTextSize(); // Adjust the font size of answer texts
     }
 
     function handleChoiceClick(event) {
@@ -118,6 +120,16 @@ document.addEventListener('DOMContentLoaded', function () {
         questionForm.style.display = 'none';
         document.getElementById('name').value = '';
         answers = [];
+    }
+
+    function adjustButtonTextSize() {
+        document.querySelectorAll('.choice-button span').forEach(span => {
+            span.style.fontSize = 'inherit'; // Reset font size
+            const parentWidth = span.parentElement.offsetWidth;
+            while (span.scrollWidth > parentWidth && parseFloat(window.getComputedStyle(span).fontSize) > 12) {
+                span.style.fontSize = `${parseFloat(window.getComputedStyle(span).fontSize) - 1}px`;
+            }
+        });
     }
 
     startButton.addEventListener('click', function () {
