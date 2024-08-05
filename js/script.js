@@ -25,17 +25,19 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function updateTimestamp() {
-        fetch('https://api.github.com/repos/semiste/widm/commits?per_page=1')
-            .then(response => response.json())
-            .then(data => {
-                const lastCommitDate = new Date(data[0].commit.committer.date);
-                const options = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' };
-                timestampElement.textContent = `Last build time: ${lastCommitDate.toLocaleDateString('en-US', options)}`;
-            })
-            .catch(error => {
-                console.error('Error fetching last commit time:', error);
-                timestampElement.textContent = 'Last build time: Unable to fetch';
-            });
+        if (timestampElement) { // Ensure element exists before trying to update it
+            fetch('https://api.github.com/repos/semiste/widm/commits?per_page=1')
+                .then(response => response.json())
+                .then(data => {
+                    const lastCommitDate = new Date(data[0].commit.committer.date);
+                    const options = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+                    timestampElement.textContent = `Last build time: ${lastCommitDate.toLocaleDateString('en-US', options)}`;
+                })
+                .catch(error => {
+                    console.error('Error fetching last commit time:', error);
+                    timestampElement.textContent = 'Last build time: Unable to fetch';
+                });
+        }
     }
 
     function showQuestion(index) {
