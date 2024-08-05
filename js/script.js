@@ -7,10 +7,23 @@ document.addEventListener('DOMContentLoaded', function () {
     const delayBeforeNextQuestion = 1000; // Adjust delay to match the GIF animation time
     const googleWebAppURL = 'https://script.google.com/macros/s/AKfycbxn5t7VjmnJAq8Oi-KmY47JJeHtrDC5guVIUEMG9qFCm_Rl6Vu6ASPAzj6E5hcE79W-/exec'; // Replace with your Google Apps Script Web App URL
 
-    let startTime; // Variable to store the start time
-    let endTime;   // Variable to store the end time
+    let startTime;
 
-    // Update timestamp with the last commit time from GitHub API
+    function startTimer() {
+        startTime = new Date();
+    }
+
+    function getTimeTaken() {
+        const endTime = new Date();
+        return Math.round((endTime - startTime) / 1000); // Time in seconds
+    }
+
+    function startBackgroundMusic() {
+        backgroundMusic.play().catch(error => {
+            console.error('Error playing background music:', error);
+        });
+    }
+
     function updateTimestamp() {
         fetch('https://api.github.com/repos/semiste/widm/commits?per_page=1')
             .then(response => response.json())
@@ -23,19 +36,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 console.error('Error fetching last commit time:', error);
                 timestampElement.textContent = 'Last build time: Unable to fetch';
             });
-    }
-
-    // Load questions from JSON
-    fetch('questions.json')
-        .then(response => response.json())
-        .then(questions => {
-            displayQuestions(questions);
-        });
-
-    function startBackgroundMusic() {
-        backgroundMusic.play().catch(error => {
-            console.error('Error playing background music:', error);
-        });
     }
 
     function showQuestion(index) {
@@ -99,51 +99,32 @@ document.addEventListener('DOMContentLoaded', function () {
         }, delayBeforeNextQuestion);
     }
 
-    function startTimer() {
-        startTime = new Date();
-    }
-
-    function stopTimer() {
-        endTime = new Date();
-    }
-
-    function calculateTimeTaken() {
-        if (startTime && endTime) {
-            const timeDiff = endTime - startTime; // Time difference in milliseconds
-            const minutes = Math.floor(timeDiff / 60000);
-            const seconds = ((timeDiff % 60000) / 1000).toFixed(0);
-            return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-        }
-        return '0:00';
-    }
-
     function submitFormData() {
-    const formData = {
-        name: document.getElementById('name').value,
-        answers: [],
-        timeTaken: document.getElementById('timer').textContent // Assuming you have a timer element
-    };
+        const formData = {
+            name: document.getElementById('name').value,
+            answers: [],
+            timeTaken: getTimeTaken() // Get the time taken to complete the test
+        };
 
-    document.querySelectorAll('.choice-button.selected').forEach(button => {
-        formData.answers.push(button.dataset.answer);
-    });
+        document.querySelectorAll('.choice-button.selected').forEach(button => {
+            formData.answers.push(button.dataset.answer);
+        });
 
-    fetch(googleWebAppURL, { // Ensure googleWebAppURL points to your web app
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formData)
-    }).then(response => response.text())
-    .then(text => {
-        alert('Test submitted successfully!');
-        console.log(text);
-    }).catch(error => {
-        console.error('Error:', error);
-        alert('There was an error submitting your test.');
-    });
-}
-
+        fetch(googleWebAppURL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
+        }).then(response => response.text())
+        .then(text => {
+            alert('Test submitted successfully!');
+            console.log(text);
+        }).catch(error => {
+            console.error('Error:', error);
+            alert('There was an error submitting your test.');
+        });
+    }
 
     startButton.addEventListener('click', function () {
         const name = document.getElementById('name').value;
@@ -152,11 +133,12 @@ document.addEventListener('DOMContentLoaded', function () {
             questionForm.style.display = 'block';
             startBackgroundMusic(); // Start background music
             updateTimestamp(); // Update timestamp on start
-            startTimer(); // Start the timer
+            startTimer(); // Start timer
         } else {
             alert('Please enter your name.');
         }
     });
 
     updateTimestamp(); // Initial timestamp update
+
 });
