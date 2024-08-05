@@ -68,11 +68,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const columnWidth = (100 / columnCount) + '%'; // Width of each column
         return columnButtons.map((buttons, columnIndex) => `
-            <div class="column" style="margin-${columnIndex === 0 ? 'left' : 'right'}: 10%; width: ${columnWidth};">
+            <div class="column" style="margin-${columnIndex === 0 ? 'left' : 'right'}: 5%; width: ${columnWidth};">
                 ${buttons.map((option, optIndex) => `
                     <button class="choice-button" data-answer="${String.fromCharCode(65 + optIndex)}">
-                        <span>${option}</span>
                         <img src="resources/Button.png" class="button-img" data-state="default">
+                        <span>${option}</span>
                     </button>
                 `).join('')}
             </div>
@@ -135,16 +135,6 @@ document.addEventListener('DOMContentLoaded', function () {
         questionForm.style.display = 'none';
         document.getElementById('name').value = '';
         answers = [];
-    }
-
-    function adjustButtonTextSize() {
-        document.querySelectorAll('.choice-button span').forEach(span => {
-            span.style.fontSize = 'inherit'; // Reset font size
-            const parentWidth = span.parentElement.offsetWidth;
-            while (span.scrollWidth > parentWidth && parseFloat(window.getComputedStyle(span).fontSize) > 12) {
-                span.style.fontSize = `${parseFloat(window.getComputedStyle(span).fontSize) - 1}px`;
-            }
-        });
     }
 
     startButton.addEventListener('click', function () {
