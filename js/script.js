@@ -41,38 +41,19 @@ document.addEventListener('DOMContentLoaded', function () {
             questionDiv.id = `question-${index}`;
             questionDiv.style.display = index === 0 ? 'block' : 'none';
 
-            const answersHtml = question.options.map((option, optIndex) => `
-                <button class="choice-button" data-answer="${String.fromCharCode(65 + optIndex)}">
-                    <img src="resources/Button.png" class="button-img" data-state="default">
-                    <span>${option}</span>
-                </button>
-            `).join('');
-
-            // Arrange buttons into columns based on number of answers
-            const columns = Math.ceil(question.options.length / 2);
-            const columnWidth = 50; // Adjust column width if needed
-            const buttonHtml = Array.from({ length: columns }, (_, colIndex) => {
-                return `
-                    <div class="choice-column" style="width: ${100 / columns}%; float: left;">
-                        ${question.options.slice(colIndex * 2, colIndex * 2 + 2).map((option, optIndex) => `
-                            <button class="choice-button" data-answer="${String.fromCharCode(65 + colIndex * 2 + optIndex)}">
-                                <img src="resources/Button.png" class="button-img" data-state="default">
-                                <span>${option}</span>
-                            </button>
-                        `).join('')}
-                    </div>
-                `;
-            }).join('');
-
-            questionDiv.innerHTML = `
+            const questionHTML = `
                 <div class="question-container">
                     <h2>${question.text}</h2>
-                    <div class="choice-container">
-                        ${buttonHtml}
-                    </div>
+                    ${question.options.map((option, optIndex) => `
+                        <button class="choice-button" data-answer="${String.fromCharCode(65 + optIndex)}">
+                            <img src="resources/Button.png" class="button-img" data-state="default">
+                            <span>${option}</span>
+                        </button>
+                    `).join('')}
                 </div>
             `;
 
+            questionDiv.innerHTML = questionHTML;
             container.appendChild(questionDiv);
         });
 
@@ -143,15 +124,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function adjustButtonTextSize() {
         document.querySelectorAll('.choice-button span').forEach(span => {
-            const button = span.closest('.choice-button');
-            const maxWidth = button.offsetWidth - 60; // 60px for image and margin
-
-            span.style.fontSize = '1.2em'; // Reset to base size
-            let currentFontSize = parseFloat(getComputedStyle(span).fontSize);
-
-            while (span.scrollWidth > maxWidth && currentFontSize > 0) {
-                currentFontSize -= 0.5;
-                span.style.fontSize = `${currentFontSize}px`;
+            span.style.fontSize = 'inherit'; // Reset font size
+            const parentWidth = span.parentElement.offsetWidth;
+            while (span.scrollWidth > parentWidth && parseFloat(window.getComputedStyle(span).fontSize) > 12) {
+                span.style.fontSize = `${parseFloat(window.getComputedStyle(span).fontSize) - 1}px`;
             }
         });
     }
