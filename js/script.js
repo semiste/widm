@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const questionForm = document.getElementById('question-form');
     const timestampElement = document.getElementById('timestamp');
     const delayBeforeNextQuestion = 1000; // Adjust delay to match the GIF animation time
-    const googleWebAppURL = 'https://script.google.com/macros/s/AKfycbxZL4218Cd8hG_GbqRfoxKrpy_KW2tM7YgWw5NZT2g4s0HQVgX_Zlp7-IyEm1R6SmcT/exec'; // Replace with your Google Apps Script Web App URL
+    const googleWebAppURL = 'https://script.google.com/macros/s/AKfycbwYALiVz5lqQWp-j-MKaWmtnliyZIPt2q8E84jYP5t8Nu9j2oj8Bt4WOV0ntjKOQeYN/exec'; // Replace with your Google Apps Script Web App URL
 
     // Update timestamp with the last commit time from GitHub API
     function updateTimestamp() {
