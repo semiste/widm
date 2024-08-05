@@ -41,43 +41,27 @@ html, body {
     width: 80%;
     max-width: 800px;
     color: white;
+    position: relative; /* To position buttons inside it */
     box-shadow: none;
 }
 
 #question-form {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-.column {
-    display: flex;
-    flex-direction: column;
-    width: 45%;
-}
-
-.column-left {
-    margin-left: 5%; /* Offset from left */
-}
-
-.column-right {
-    margin-left: 5%; /* Offset from middle */
+    position: relative;
+    width: 100%;
+    height: 100%;
 }
 
 .choice-button {
     display: flex;
     align-items: center;
-    margin-bottom: 10px;
-    border: none;
-    background: transparent;
+    position: absolute;
     cursor: pointer;
-    color: white;
     font-size: 1.2em;
+    color: white;
 }
 
 .choice-button img {
-    width: 40px;
+    width: 40px; /* Adjust the size of the button */
     height: auto;
     margin-right: 10px;
 }
@@ -87,20 +71,14 @@ html, body {
     vertical-align: middle;
 }
 
-@media (max-width: 600px) {
-    .choice-button {
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
-    }
-
-    .choice-button img {
-        margin-right: 0;
-        margin-bottom: 5px;
-    }
-
-    .column {
-        width: 100%;
-        margin-left: 0;
-    }
+/* Position buttons based on their order */
+.button-position {
+    /* Placeholder class to set individual button positions */
 }
+
+.button-position:nth-child(1) { top: 50px; left: 100px; }
+.button-position:nth-child(2) { top: 50px; left: calc(50% + 100px); }
+.button-position:nth-child(3) { top: 100px; left: 100px; }
+.button-position:nth-child(4) { top: 100px; left: calc(50% + 100px); }
+.button-position:nth-child(5) { top: 150px; left: 100px; }
+.button-position:nth-child(6) { top: 150px; left: calc(50% + 100px); }
