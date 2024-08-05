@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const nameQuestion = document.getElementById('start-screen');
     const questionForm = document.getElementById('question-screen');
     const delayBeforeNextQuestion = 1000; // Adjust delay to match the GIF animation time
-    const googleWebAppURL = 'https://script.google.com/macros/s/AKfycbwnMcserygFAV1Yn6zlK8t0rLUfTHKunyUKqt5bY8z5pmloBak18Ru3hBzW04rcGmR4/exec'; // Replace with your Google Apps Script Web App URL
+    const googleWebAppURL = 'https://script.google.com/macros/s/AKfycbzjA85eiLddpHJTKuHvzwW4MOHnlTYPuyhZhHiiu3osC-sjvDYeUcJwRhYVExzvZZkt/exec'; // Replace with your Google Apps Script Web App URL
 
     let startTime;
 
