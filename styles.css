@@ -1,96 +1,57 @@
-/* General Styles */
 body {
     margin: 0;
+    padding: 0;
+    overflow: hidden;
     font-family: Arial, sans-serif;
 }
 
-#form-container {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-}
-
-#name-question, #question-form {
+.screen {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-}
-
-#name-question {
-    background-color: black;
-    padding: 20px;
-    border-radius: 10px;
-}
-
-#name-question h2, #name-question input, #name-question button {
-    color: white;
-    margin: 10px 0;
-}
-
-#timestamp {
-    color: white;
-    font-size: 0.8em;
-    margin-top: 20px;
-}
-
-#question-form {
-    display: none;
-}
-
-.question-container {
-    position: relative;
-}
-
-.question {
-    display: none;
-    text-align: center;
-    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .background-image {
     position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
     z-index: -1;
 }
 
-.question h2 {
-    color: white;
+.input-container {
+    text-align: center;
+}
+
+#question-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.question {
+    text-align: center;
 }
 
 .choice-button {
-    display: inline-block;
-    margin: 10px;
+    background: transparent;
     border: none;
-    background: none;
     cursor: pointer;
-    position: relative;
+    margin: 5px;
 }
 
-.choice-button img.button-img {
-    width: 100px; /* Adjust size as needed */
-    height: auto;
+.choice-button img {
+    width: 100px;
+    height: 50px;
 }
 
 .choice-button span {
+    display: block;
     color: white;
-    font-size: 1.2em;
-    vertical-align: middle;
-    margin-left: 10px;
-}
-
-.choice-button:hover .button-img {
-    opacity: 0.7;
-}
-
-.choice-button.selected img.button-img {
-    opacity: 0.5;
+    font-size: 18px;
 }
