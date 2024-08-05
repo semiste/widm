@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const nameQuestion = document.getElementById('start-screen');
     const questionForm = document.getElementById('question-screen');
     const delayBeforeNextQuestion = 1000; // Adjust delay to match the GIF animation time
-    const googleWebAppURL = 'https://script.google.com/macros/s/AKfycbw7hx3nGbNhIPY1Bs265KdTb-_JEfl28RUB0fq-QkYUpk2kNUvgRhCx8cNhm1V-neNM/exec'; // Replace with your Google Apps Script Web App URL
+    const googleWebAppURL = 'https://script.google.com/macros/s/AKfycbz-ChDbaQ72CgBJEkXRHxcvD1creh73W_BgOFL3sI1v5qdv-p9vSvBFwQoQ9OlNn1Mv/exec'; // Replace with your Google Apps Script Web App URL
 
     let startTime;
 
@@ -98,9 +98,10 @@ document.addEventListener('DOMContentLoaded', function () {
         fetch(googleWebAppURL, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'text/plain;charset=utf-8'
             },
-            body: JSON.stringify(formData)
+            body: JSON.stringify(formData),
+            redirect: 'follow'  // Important for handling redirects
         }).then(response => response.text())
         .then(text => {
             alert('Test submitted successfully!');
