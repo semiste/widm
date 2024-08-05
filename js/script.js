@@ -44,7 +44,9 @@ document.addEventListener('DOMContentLoaded', function () {
             const questionHTML = `
                 <div class="question-box">
                     <h2>${question.text}</h2>
-                    ${createAnswerButtons(question.options)}
+                    <div class="question-options">
+                        ${createAnswerButtons(question.options)}
+                    </div>
                 </div>
             `;
 
@@ -58,17 +60,15 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function createAnswerButtons(options) {
-        const columnCount = Math.min(Math.ceil(options.length / 2), 2);
-        const columnButtons = [[], []];
+        const columns = [[], []]; // Array for two columns
 
         options.forEach((option, index) => {
-            const column = index % 2;
-            columnButtons[column].push(option);
+            const column = index % 2; // Distribute options between two columns
+            columns[column].push(option);
         });
 
-        const columnWidth = (100 / columnCount) + '%'; // Width of each column
-        return columnButtons.map((buttons, columnIndex) => `
-            <div class="column" style="margin-${columnIndex === 0 ? 'left' : 'right'}: 5%; width: ${columnWidth};">
+        return columns.map((buttons, colIndex) => `
+            <div class="column">
                 ${buttons.map((option, optIndex) => `
                     <button class="choice-button" data-answer="${String.fromCharCode(65 + optIndex)}">
                         <img src="resources/Button.png" class="button-img" data-state="default">
