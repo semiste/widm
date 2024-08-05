@@ -42,7 +42,6 @@ document.addEventListener('DOMContentLoaded', function () {
             questionDiv.style.display = index === 0 ? 'block' : 'none';
 
             const questionHTML = `
-                <img src="resources/background_exam.png" alt="Background Exam" class="background-image">
                 <div class="question-container">
                     <h2>${question.text}</h2>
                     ${question.options.map((option, optIndex) => `
@@ -106,10 +105,19 @@ document.addEventListener('DOMContentLoaded', function () {
         .then(text => {
             alert('Test submitted successfully!');
             console.log(text);
+            // Return to the start screen
+            resetToStartScreen();
         }).catch(error => {
             console.error('Error:', error);
             alert('There was an error submitting your test.');
         });
+    }
+
+    function resetToStartScreen() {
+        nameQuestion.style.display = 'flex';
+        questionForm.style.display = 'none';
+        document.getElementById('name').value = '';
+        answers = [];
     }
 
     startButton.addEventListener('click', function () {
