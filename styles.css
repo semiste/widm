@@ -34,83 +34,48 @@ html, body {
     z-index: 1; /* Ensure it appears above the background image */
 }
 
-.question-box {
-    background-color: transparent; /* Invisible background for the question box */
-    padding: 20px;
-    border-radius: 10px;
-    width: 80%;
-    max-width: 800px;
-    margin: 0 auto;
-    color: white; /* Set font color to white */
-}
-
 #question-form {
     text-align: center;
     position: relative;
     z-index: 1; /* Ensure it appears above the background image */
-    color: white; /* Set font color to white */
+    background: rgba(0, 0, 0, 0.7); /* Semi-transparent background for question box */
+    padding: 20px;
+    border-radius: 8px;
 }
 
 .choice-button {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     margin: 10px;
     padding: 10px;
     border: none;
     background: transparent;
     cursor: pointer;
-    color: white; /* Set font color to white */
-    font-size: 1.2em; /* Slightly increase font size */
+    position: relative;
 }
 
 .choice-button img {
-    width: 50px; /* Reduce the size of the button image */
-    height: auto;
-    margin-right: 10px; /* Space between the image and the text */
-    vertical-align: middle; /* Align image with text */
+    width: 50px; /* Adjust button size */
+    height: 50px;
+    margin-right: 10px; /* Space between image and text */
 }
 
 .choice-button span {
+    color: white;
+    font-size: 18px; /* Slightly larger font size */
     display: inline-block;
-    vertical-align: middle; /* Align text with image */
+    vertical-align: middle;
 }
 
-.answers {
+/* Additional CSS to handle the button layout */
+.choice-button-container {
     display: flex;
-    justify-content: space-between; /* Distribute space between columns */
     flex-wrap: wrap;
-    align-items: flex-start; /* Align items to the top */
+    justify-content: flex-start; /* Aligns buttons to the left */
 }
 
-.option-row {
-    flex: 1;
+.choice-button-container > div {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start; /* Align items to the left */
-}
-
-@media (max-width: 600px) {
-    .choice-button {
-        flex-direction: column; /* Stack image and text vertically on small screens */
-        align-items: center;
-    }
-
-    .choice-button img {
-        margin-right: 0;
-        margin-bottom: 5px;
-    }
-}
-
-/* Force landscape orientation */
-@media screen and (orientation:portrait) {
-    body {
-        transform: rotate(90deg);
-        transform-origin: left top;
-        width: 100vh;
-        height: 100vw;
-        overflow-x: hidden;
-        position: absolute;
-        top: 100%;
-        left: 0;
-    }
+    align-items: center;
+    margin: 5px;
 }
