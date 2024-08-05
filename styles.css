@@ -55,7 +55,7 @@ html, body {
 .column {
     display: flex;
     flex-direction: column;
-    width: 45%; /* Adjust width as needed */
+    width: 48%; /* Adjust width to leave some space between columns */
 }
 
 .choice-button {
