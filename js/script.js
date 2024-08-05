@@ -13,7 +13,9 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
     function startBackgroundMusic() {
-        backgroundMusic.play();
+        backgroundMusic.play().catch(error => {
+            console.error('Error playing background music:', error);
+        });
     }
 
     function showQuestion(index) {
