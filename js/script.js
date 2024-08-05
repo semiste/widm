@@ -34,14 +34,16 @@ document.addEventListener('DOMContentLoaded', function () {
             questionDiv.style.display = index === 0 ? 'block' : 'none';
 
             const questionHTML = `
-                <img src="resources/background_exam.png" alt="Background Exam">
-                <h2 style="color: white;">${question.text}</h2>
-                ${question.options.map(option => `
-                    <button class="choice-button" data-answer="${option}">
-                        <img src="resources/Button.png" class="button-img" data-state="default">
-                        <span>${option}</span>
-                    </button>
-                `).join('')}
+                <img src="resources/background_exam.png" alt="Background Exam" class="background-image">
+                <div class="question-container">
+                    <h2>${question.text}</h2>
+                    ${question.options.map(option => `
+                        <button class="choice-button" data-answer="${option}">
+                            <img src="resources/Button.png" class="button-img" data-state="default">
+                            <span>${option}</span>
+                        </button>
+                    `).join('')}
+                </div>
             `;
 
             questionDiv.innerHTML = questionHTML;
