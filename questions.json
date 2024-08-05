@@ -1,27 +1,26 @@
 [
     {
-        "text": "What is your favorite color?",
-        "options": ["Red", "Blue", "Green", "Yellow"]
+        "text": "Question 1?",
+        "options": ["Answer 1", "Answer 2"]
     },
     {
-        "text": "What is your favorite 1?",
-        "options": ["Red", "Blue", "Green1", "Ye1llow"]
+        "text": "Question 2?",
+        "options": ["Answer 1", "Answer 2", "Answer 3"]
     },
     {
-        "text": "What is your favorite 2?",
-        "options": ["R1ed", "Bl1", "Green", "Yellow"]
+        "text": "Question 3?",
+        "options": ["Answer 1", "Answer 2", "Answer 3", "Answer 4"]
     },
     {
-        "text": "What is your favorite 3?",
-        "options": ["Re1d", "Blue", "Green", "Yellow"]
+        "text": "Question 4?",
+        "options": ["Answer 1", "Answer 2"]
     },
     {
-        "text": "What is your favorite 4?",
-        "options": ["Re1d", "B1ue", "Green", "Yell1ow"]
+        "text": "Question 5?",
+        "options": ["Answer 1", "Answer 2", "Answer 3"]
     },
-
     {
-        "text": "What is your favorite animal?",
-        "options": ["Dog", "Cat", "Bird", "Fish"]
+        "text": "Question 6?",
+        "options": ["Answer 1", "Answer 2", "Answer 3", "Answer 4"]
     }
 ]
