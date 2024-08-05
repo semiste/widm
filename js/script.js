@@ -44,12 +44,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const questionHTML = `
                 <div class="question-container">
                     <h2>${question.text}</h2>
-                    ${question.options.map((option, optIndex) => `
-                        <button class="choice-button" data-answer="${String.fromCharCode(65 + optIndex)}">
-                            <img src="resources/Button.png" class="button-img" data-state="default">
-                            <span>${option}</span>
-                        </button>
-                    `).join('')}
+                    ${createAnswerButtons(question.options)}
                 </div>
             `;
 
@@ -62,6 +57,27 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
         adjustButtonTextSize(); // Adjust the font size of answer texts
+    }
+
+    function createAnswerButtons(options) {
+        const columns = Math.min(Math.ceil(options.length / 2), 2);
+        const columnButtons = [[], []];
+
+        options.forEach((option, index) => {
+            const column = index % 2;
+            columnButtons[column].push(option);
+        });
+
+        return columnButtons.map(buttons => `
+            <div class="column">
+                ${buttons.map((option, optIndex) => `
+                    <button class="choice-button" data-answer="${String.fromCharCode(65 + optIndex)}">
+                        <img src="resources/Button.png" class="button-img" data-state="default">
+                        <span>${option}</span>
+                    </button>
+                `).join('')}
+            </div>
+        `).join('');
     }
 
     function handleChoiceClick(event) {
