@@ -4,10 +4,9 @@ document.addEventListener('DOMContentLoaded', function () {
     const nameQuestion = document.getElementById('start-screen');
     const questionForm = document.getElementById('question-screen');
     const delayBeforeNextQuestion = 1000; // Adjust delay to match the GIF animation time
-    const googleWebAppURL = 'https://script.google.com/macros/s/AKfycbztEyQjKgpXJlc9N3lWLslJ8M9eL50thODiqq0NhrHN2FKYGf9M3Z0154_1bSohtptK/exec'; // Replace with your Google Apps Script Web App URL
+    const googleWebAppURL = 'https://script.google.com/macros/s/AKfycbw7hx3nGbNhIPY1Bs265KdTb-_JEfl28RUB0fq-QkYUpk2kNUvgRhCx8cNhm1V-neNM/exec'; // Replace with your Google Apps Script Web App URL
 
     let startTime;
-    let answers = []; // To store answers
 
     function startTimer() {
         startTime = new Date();
@@ -41,12 +40,21 @@ document.addEventListener('DOMContentLoaded', function () {
             questionDiv.id = `question-${index}`;
             questionDiv.style.display = index === 0 ? 'block' : 'none';
 
+            const choices = question.options.map((option, i) => `
+                <div class="choice-button-container">
+                    <div>
+                        <button class="choice-button" data-answer="${option}">
+                            <img src="resources/Button.png" class="button-img" data-state="default">
+                            <span>${option}</span>
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+
             const questionHTML = `
                 <div class="question-container">
                     <h2>${question.text}</h2>
-                    <div class="answers">
-                        ${getFormattedOptions(question.options)}
-                    </div>
+                    ${choices}
                 </div>
             `;
 
@@ -57,28 +65,6 @@ document.addEventListener('DOMContentLoaded', function () {
         document.querySelectorAll('.choice-button').forEach(button => {
             button.addEventListener('click', handleChoiceClick);
         });
-
-        adjustButtonTextSize(); // Adjust the font size of answer texts
-    }
-
-    function getFormattedOptions(options) {
-        const columns = Math.ceil(options.length / 2);
-        let html = '';
-        for (let i = 0; i < columns; i++) {
-            html += '<div class="option-row">';
-            for (let j = i; j < options.length; j += columns) {
-                const optIndex = j;
-                const option = options[optIndex];
-                html += `
-                    <button class="choice-button" data-answer="${String.fromCharCode(65 + optIndex)}">
-                        <img src="resources/Button.png" class="button-img" data-state="default">
-                        <span>${option}</span>
-                    </button>
-                `;
-            }
-            html += '</div>';
-        }
-        return html;
     }
 
     function handleChoiceClick(event) {
@@ -90,18 +76,20 @@ document.addEventListener('DOMContentLoaded', function () {
         const clickSound = new Audio('resources/klik.wav');
         clickSound.play();
 
-        const answer = button.dataset.answer;
-        const currentQuestionIndex = Array.from(button.closest('.question').parentElement.children).indexOf(button.closest('.question'));
-        answers[currentQuestionIndex] = answer; // Store the answer
-
         // Delay before showing the next question
         setTimeout(() => {
             img.src = 'resources/Button.png'; // Change back to default image
+            const currentQuestionIndex = Array.from(button.closest('.question').parentElement.children).indexOf(button.closest('.question'));
             if (currentQuestionIndex + 1 < document.querySelectorAll('.question').length) {
                 showQuestion(currentQuestionIndex + 1);
             } else {
                 // Handle form submission here
                 submitFormData();
+                // Return to start screen after submission
+                setTimeout(() => {
+                    nameQuestion.style.display = 'block';
+                    questionForm.style.display = 'none';
+                }, 2000); // 2 seconds delay for the alert
             }
         }, delayBeforeNextQuestion);
     }
@@ -109,43 +97,27 @@ document.addEventListener('DOMContentLoaded', function () {
     function submitFormData() {
         const formData = {
             name: document.getElementById('name').value,
-            answers: answers, // Include answers array
+            answers: [],
             timeTaken: getTimeTaken() // Get the time taken to complete the test
         };
+
+        document.querySelectorAll('.choice-button.selected').forEach(button => {
+            formData.answers.push(button.dataset.answer);
+        });
 
         fetch(googleWebAppURL, {
             method: 'POST',
             headers: {
-                'Content-Type': 'text/plain;charset=utf-8'
+                'Content-Type': 'application/json'
             },
-            body: JSON.stringify(formData),
-            redirect: 'follow'  // Important for handling redirects
+            body: JSON.stringify(formData)
         }).then(response => response.text())
         .then(text => {
             alert('Test submitted successfully!');
             console.log(text);
-            // Return to the start screen
-            resetToStartScreen();
         }).catch(error => {
             console.error('Error:', error);
             alert('There was an error submitting your test.');
-        });
-    }
-
-    function resetToStartScreen() {
-        nameQuestion.style.display = 'flex';
-        questionForm.style.display = 'none';
-        document.getElementById('name').value = '';
-        answers = [];
-    }
-
-    function adjustButtonTextSize() {
-        document.querySelectorAll('.choice-button span').forEach(span => {
-            span.style.fontSize = 'inherit'; // Reset font size
-            const parentWidth = span.parentElement.offsetWidth;
-            while (span.scrollWidth > parentWidth && parseFloat(window.getComputedStyle(span).fontSize) > 12) {
-                span.style.fontSize = `${parseFloat(window.getComputedStyle(span).fontSize) - 1}px`;
-            }
         });
     }
 
