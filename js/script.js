@@ -96,36 +96,31 @@ document.addEventListener('DOMContentLoaded', function () {
         }, delayBeforeNextQuestion);
     }
 
-    function submitFormData() {
-        const formData = {
-            name: document.getElementById('name').value,
-            answers: []
-        };
+function submitFormData() {
+    const formData = {
+        name: document.getElementById('name').value,
+        answers: []
+    };
 
-        // Collect data from form elements
-        document.querySelectorAll('.choice-button').forEach(button => {
-            if (button.classList.contains('selected')) {
-                formData.answers.push(button.dataset.answer);
-            }
-        });
+    document.querySelectorAll('.choice-button.selected').forEach(button => {
+        formData.answers.push(button.dataset.answer);
+    });
 
-        fetch(googleWebAppURL, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(formData),
-        }).then(response => {
-            return response.text(); // Read the response from the server
-        }).then(text => {
-            alert('Test submitted successfully!');
-            console.log(text); // Log the response for troubleshooting
-        }).catch(error => {
-            console.error('Error:', error);
-            alert('There was an error submitting your test.');
-        });
-    }
-
+    fetch('https://script.google.com/macros/s/AKfycbxh65DBy8ZuLr27bwjkJCWLkUt7KdZ_m7YTYBLE8LM/dev', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+    }).then(response => response.text())
+    .then(text => {
+        alert('Test submitted successfully!');
+        console.log(text);
+    }).catch(error => {
+        console.error('Error:', error);
+        alert('There was an error submitting your test.');
+    });
+}
     startButton.addEventListener('click', function () {
         const name = document.getElementById('name').value;
         if (name.trim()) {
