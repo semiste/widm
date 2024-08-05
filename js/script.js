@@ -7,12 +7,19 @@ document.addEventListener('DOMContentLoaded', function () {
     const delayBeforeNextQuestion = 1000; // Adjust delay to match the GIF animation time
     const googleWebAppURL = 'YOUR_WEB_APP_URL'; // Replace with your Google Apps Script Web App URL
 
-    // Update timestamp on page load
+    // Update timestamp with the last commit time from GitHub API
     function updateTimestamp() {
-        const buildTime = document.querySelector('meta[name="build-time"]').getAttribute('content');
-        const now = new Date();
-        const options = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' };
-        timestampElement.textContent = `Last build time: ${new Date(buildTime).toLocaleDateString('en-US', options)}`;
+        fetch('https://api.github.com/repos/semiste/widm/commits?per_page=1')
+            .then(response => response.json())
+            .then(data => {
+                const lastCommitDate = new Date(data[0].commit.committer.date);
+                const options = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+                timestampElement.textContent = `Last build time: ${lastCommitDate.toLocaleDateString('en-US', options)}`;
+            })
+            .catch(error => {
+                console.error('Error fetching last commit time:', error);
+                timestampElement.textContent = 'Last build time: Unable to fetch';
+            });
     }
 
     // Load questions from JSON
