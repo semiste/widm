@@ -50,42 +50,68 @@
     <audio id="backgroundMusic" src="https://raw.githubusercontent.com/semiste/widm/main/ludibrium_steal.mp3" loop></audio>
     <audio id="soundEffect" src="https://raw.githubusercontent.com/semiste/widm/main/wahoo_test.wav"></audio>
     <div class="container">
-        <form id="customForm">
-            <div class="question active" id="question1">
-                <h2>What is your name?</h2>
-                <input type="text" id="name" name="name" required>
-                <button type="button" onclick="startTimer(); showQuestion(2); playSoundEffect()">Next</button>
-            </div>
-            <div class="question" id="question2">
-                <h2>Question 2</h2>
-                <input type="text" name="answer2" required>
-                <button type="button" onclick="nextQuestion(3); playSoundEffect()">Next</button>
-                <button type="button" onclick="prevQuestion(1); playSoundEffect()">Previous</button>
-            </div>
-            <div class="question" id="question3">
-                <h2>Question 3</h2>
-                <input type="text" name="answer3" required>
-                <button type="button" onclick="submitForm(); playSoundEffect()">Submit</button>
-                <button type="button" onclick="prevQuestion(2); playSoundEffect()">Previous</button>
-            </div>
-        </form>
+        <form id="customForm"></form>
     </div>
     <script>
         let startTime = 0;
+        let questions = [];
 
-        function showQuestion(questionNumber) {
-            document.querySelectorAll('.question').forEach((element) => {
-                element.classList.remove('active');
-            });
-            document.getElementById('question' + questionNumber).classList.add('active');
-        }
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('https://raw.githubusercontent.com/semiste/widm/main/questions.json')
+                .then(response => response.json())
+                .then(data => {
+                    questions = data;
+                    displayQuestion(1);
+                })
+                .catch(error => console.error('Error loading questions:', error));
+        });
 
-        function nextQuestion(next) {
-            showQuestion(next);
-        }
+        function displayQuestion(questionNumber) {
+            const form = document.getElementById('customForm');
+            form.innerHTML = '';
+            const questionData = questions.find(q => q.id === questionNumber);
+            
+            if (questionData) {
+                const questionDiv = document.createElement('div');
+                questionDiv.classList.add('question', 'active');
+                questionDiv.id = `question${questionNumber}`;
 
-        function prevQuestion(prev) {
-            showQuestion(prev);
+                const questionTitle = document.createElement('h2');
+                questionTitle.textContent = questionData.question;
+                questionDiv.appendChild(questionTitle);
+
+                const input = document.createElement('input');
+                input.type = questionData.type;
+                input.name = questionData.name;
+                input.required = true;
+                questionDiv.appendChild(input);
+
+                const nextButton = document.createElement('button');
+                nextButton.type = 'button';
+                nextButton.textContent = questionNumber < questions.length ? 'Next' : 'Submit';
+                nextButton.onclick = () => {
+                    playSoundEffect();
+                    if (questionNumber < questions.length) {
+                        displayQuestion(questionNumber + 1);
+                    } else {
+                        submitForm();
+                    }
+                };
+                questionDiv.appendChild(nextButton);
+
+                if (questionNumber > 1) {
+                    const prevButton = document.createElement('button');
+                    prevButton.type = 'button';
+                    prevButton.textContent = 'Previous';
+                    prevButton.onclick = () => {
+                        playSoundEffect();
+                        displayQuestion(questionNumber - 1);
+                    };
+                    questionDiv.appendChild(prevButton);
+                }
+
+                form.appendChild(questionDiv);
+            }
         }
 
         function startTimer() {
