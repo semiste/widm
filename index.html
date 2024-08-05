@@ -6,7 +6,7 @@
     <title>Custom Form with Background Music</title>
     <style>
         body {
-            background: url('https://raw.githubusercontent.com/semiste/widm/main/slime.png') no-repeat center center fixed;
+            background: url('https://raw.githubusercontent.com/semiste/widm/main/background_exam.png') no-repeat center center fixed;
             background-size: cover;
             margin: 0;
             font-family: Arial, sans-serif;
@@ -47,7 +47,7 @@
             margin-right: 10px;
             cursor: pointer;
         }
-        .multiple-choice .option button:active {
+        .multiple-choice .option button.active {
             background: url('https://raw.githubusercontent.com/semiste/widm/main/aButton.gif') no-repeat center center;
             background-size: cover;
         }
@@ -157,6 +157,7 @@
                         button.onclick = () => {
                             document.querySelector(`input[name=${questionData.name}]`).value = option;
                             playSoundEffect();
+                            button.classList.add('active');
                             setTimeout(() => {
                                 if (questionNumber < questions.length) {
                                     displayQuestion(questionNumber + 1);
