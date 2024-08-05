@@ -4,9 +4,10 @@ document.addEventListener('DOMContentLoaded', function () {
     const nameQuestion = document.getElementById('start-screen');
     const questionForm = document.getElementById('question-screen');
     const delayBeforeNextQuestion = 1000; // Adjust delay to match the GIF animation time
-    const googleWebAppURL = 'https://script.google.com/macros/s/AKfycbztEyQjKgpXJlc9N3lWLslJ8M9eL50thODiqq0NhrHN2FKYGf9M3Z0154_1bSohtptK/exec'; // Replace with your Google Apps Script Web App URL
+    const googleWebAppURL = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec'; // Replace with your Google Apps Script Web App URL
 
     let startTime;
+    let answers = []; // To store answers
 
     function startTimer() {
         startTime = new Date();
@@ -40,31 +41,46 @@ document.addEventListener('DOMContentLoaded', function () {
             questionDiv.id = `question-${index}`;
             questionDiv.style.display = index === 0 ? 'block' : 'none';
 
-            const choices = question.options.map((option, i) => `
-                <div class="choice-button-container">
-                    <div>
-                        <button class="choice-button" data-answer="${option}">
-                            <img src="resources/Button.png" class="button-img" data-state="default">
-                            <span>${option}</span>
-                        </button>
-                    </div>
-                </div>
+            const answersHtml = question.options.map((option, optIndex) => `
+                <button class="choice-button" data-answer="${String.fromCharCode(65 + optIndex)}">
+                    <img src="resources/Button.png" class="button-img" data-state="default">
+                    <span>${option}</span>
+                </button>
             `).join('');
 
-            const questionHTML = `
+            // Arrange buttons into columns based on number of answers
+            const columns = Math.ceil(question.options.length / 2);
+            const columnWidth = 50; // Adjust column width if needed
+            const buttonHtml = Array.from({ length: columns }, (_, colIndex) => {
+                return `
+                    <div class="choice-column" style="width: ${100 / columns}%; float: left;">
+                        ${question.options.slice(colIndex * 2, colIndex * 2 + 2).map((option, optIndex) => `
+                            <button class="choice-button" data-answer="${String.fromCharCode(65 + colIndex * 2 + optIndex)}">
+                                <img src="resources/Button.png" class="button-img" data-state="default">
+                                <span>${option}</span>
+                            </button>
+                        `).join('')}
+                    </div>
+                `;
+            }).join('');
+
+            questionDiv.innerHTML = `
                 <div class="question-container">
                     <h2>${question.text}</h2>
-                    ${choices}
+                    <div class="choice-container">
+                        ${buttonHtml}
+                    </div>
                 </div>
             `;
 
-            questionDiv.innerHTML = questionHTML;
             container.appendChild(questionDiv);
         });
 
         document.querySelectorAll('.choice-button').forEach(button => {
             button.addEventListener('click', handleChoiceClick);
         });
+
+        adjustButtonTextSize(); // Adjust the font size of answer texts
     }
 
     function handleChoiceClick(event) {
@@ -76,20 +92,18 @@ document.addEventListener('DOMContentLoaded', function () {
         const clickSound = new Audio('resources/klik.wav');
         clickSound.play();
 
+        const answer = button.dataset.answer;
+        const currentQuestionIndex = Array.from(button.closest('.question').parentElement.children).indexOf(button.closest('.question'));
+        answers[currentQuestionIndex] = answer; // Store the answer
+
         // Delay before showing the next question
         setTimeout(() => {
             img.src = 'resources/Button.png'; // Change back to default image
-            const currentQuestionIndex = Array.from(button.closest('.question').parentElement.children).indexOf(button.closest('.question'));
             if (currentQuestionIndex + 1 < document.querySelectorAll('.question').length) {
                 showQuestion(currentQuestionIndex + 1);
             } else {
                 // Handle form submission here
                 submitFormData();
-                // Return to start screen after submission
-                setTimeout(() => {
-                    nameQuestion.style.display = 'block';
-                    questionForm.style.display = 'none';
-                }, 2000); // 2 seconds delay for the alert
             }
         }, delayBeforeNextQuestion);
     }
@@ -97,27 +111,48 @@ document.addEventListener('DOMContentLoaded', function () {
     function submitFormData() {
         const formData = {
             name: document.getElementById('name').value,
-            answers: [],
+            answers: answers, // Include answers array
             timeTaken: getTimeTaken() // Get the time taken to complete the test
         };
-
-        document.querySelectorAll('.choice-button.selected').forEach(button => {
-            formData.answers.push(button.dataset.answer);
-        });
 
         fetch(googleWebAppURL, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'text/plain;charset=utf-8'
             },
-            body: JSON.stringify(formData)
+            body: JSON.stringify(formData),
+            redirect: 'follow'  // Important for handling redirects
         }).then(response => response.text())
         .then(text => {
             alert('Test submitted successfully!');
             console.log(text);
+            // Return to the start screen
+            resetToStartScreen();
         }).catch(error => {
             console.error('Error:', error);
             alert('There was an error submitting your test.');
+        });
+    }
+
+    function resetToStartScreen() {
+        nameQuestion.style.display = 'flex';
+        questionForm.style.display = 'none';
+        document.getElementById('name').value = '';
+        answers = [];
+    }
+
+    function adjustButtonTextSize() {
+        document.querySelectorAll('.choice-button span').forEach(span => {
+            const button = span.closest('.choice-button');
+            const maxWidth = button.offsetWidth - 60; // 60px for image and margin
+
+            span.style.fontSize = '1.2em'; // Reset to base size
+            let currentFontSize = parseFloat(getComputedStyle(span).fontSize);
+
+            while (span.scrollWidth > maxWidth && currentFontSize > 0) {
+                currentFontSize -= 0.5;
+                span.style.fontSize = `${currentFontSize}px`;
+            }
         });
     }
 
