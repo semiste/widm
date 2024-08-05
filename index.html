@@ -47,7 +47,7 @@
     </style>
 </head>
 <body>
-    <audio id="backgroundMusic" src="https://raw.githubusercontent.com/semiste/widm/main/ludibrium_steal.mp3" autoplay loop></audio>
+    <audio id="backgroundMusic" src="https://raw.githubusercontent.com/semiste/widm/main/ludibrium_steal.mp3" loop></audio>
     <audio id="soundEffect" src="https://raw.githubusercontent.com/semiste/widm/main/wahoo_test.wav"></audio>
     <div class="container">
         <form id="customForm">
@@ -90,6 +90,7 @@
 
         function startTimer() {
             startTime = Date.now();
+            playBackgroundMusic();
         }
 
         function submitForm() {
@@ -107,6 +108,10 @@
         function exportData(data) {
             console.log('Data to be exported:', data);
             // Implement your data export logic here
+        }
+
+        function playBackgroundMusic() {
+            document.getElementById('backgroundMusic').play();
         }
 
         function playSoundEffect() {
