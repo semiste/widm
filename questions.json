@@ -5,11 +5,11 @@
     },
     {
         "text": "Which planet is known as the Red Planet?",
-        "options": ["Mars", "Earth", "Jupiter", "Saturn"]
+        "options": ["Mars", "Earth"]
     },
     {
         "text": "What is the largest ocean on Earth?",
-        "options": ["Pacific Ocean", "Atlantic Ocean", "Indian Ocean", "Arctic Ocean"]
+        "options": ["Pacific Ocean", "Atlantic Ocean", "Indian Ocean", "Arctic Ocean", "Atlanwtic Ocean", "Indiddaasasfgersan Ocean"]
     },
     {
         "text": "Who wrote 'To Kill a Mockingbird'?",
@@ -17,7 +17,7 @@
     },
     {
         "text": "What is the chemical symbol for water?",
-        "options": ["H2O", "O2", "CO2", "NaCl"]
+        "options": ["H222222222222222222222222222222222222222222222222222222222222222222222O", "O2", "CO2", "NaCl"]
     },
     {
         "text": "Which is the largest mammal?",
