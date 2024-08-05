@@ -108,6 +108,12 @@
                         displayQuestion(questionNumber - 1);
                     };
                     questionDiv.appendChild(prevButton);
+                } else {
+                    nextButton.onclick = () => {
+                        startTimer();
+                        playSoundEffect();
+                        displayQuestion(questionNumber + 1);
+                    };
                 }
 
                 form.appendChild(questionDiv);
