@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (name.trim()) {
             nameQuestion.style.display = 'none';
             questionForm.style.display = 'block';
-            startBackgroundMusic();
+            startBackgroundMusic(); // Start background music
         } else {
             alert('Please enter your name.');
         }
