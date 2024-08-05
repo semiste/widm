@@ -32,6 +32,24 @@
         .question.active {
             display: block;
         }
+        .multiple-choice {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .multiple-choice button {
+            background: url('https://raw.githubusercontent.com/semiste/widm/main/Button.png') no-repeat center center;
+            background-size: cover;
+            border: none;
+            width: 200px;
+            height: 50px;
+            margin: 10px 0;
+            cursor: pointer;
+        }
+        .multiple-choice button:active {
+            background: url('https://raw.githubusercontent.com/semiste/widm/main/aButton.gif') no-repeat center center;
+            background-size: cover;
+        }
         button {
             margin-top: 20px;
             padding: 10px 20px;
@@ -80,40 +98,66 @@
                 questionTitle.textContent = questionData.question;
                 questionDiv.appendChild(questionTitle);
 
-                const input = document.createElement('input');
-                input.type = questionData.type;
-                input.name = questionData.name;
-                input.required = true;
-                questionDiv.appendChild(input);
+                if (questionData.type === 'text') {
+                    const input = document.createElement('input');
+                    input.type = questionData.type;
+                    input.name = questionData.name;
+                    input.required = true;
+                    questionDiv.appendChild(input);
 
-                const nextButton = document.createElement('button');
-                nextButton.type = 'button';
-                nextButton.textContent = questionNumber < questions.length ? 'Next' : 'Submit';
-                nextButton.onclick = () => {
-                    playSoundEffect();
-                    if (questionNumber < questions.length) {
-                        displayQuestion(questionNumber + 1);
-                    } else {
-                        submitForm();
-                    }
-                };
-                questionDiv.appendChild(nextButton);
-
-                if (questionNumber > 1) {
-                    const prevButton = document.createElement('button');
-                    prevButton.type = 'button';
-                    prevButton.textContent = 'Previous';
-                    prevButton.onclick = () => {
-                        playSoundEffect();
-                        displayQuestion(questionNumber - 1);
-                    };
-                    questionDiv.appendChild(prevButton);
-                } else {
+                    const nextButton = document.createElement('button');
+                    nextButton.type = 'button';
+                    nextButton.textContent = questionNumber < questions.length ? 'Next' : 'Submit';
                     nextButton.onclick = () => {
-                        startTimer();
+                        if (questionNumber === 1) startTimer();
                         playSoundEffect();
-                        displayQuestion(questionNumber + 1);
+                        if (questionNumber < questions.length) {
+                            displayQuestion(questionNumber + 1);
+                        } else {
+                            submitForm();
+                        }
                     };
+                    questionDiv.appendChild(nextButton);
+                } else if (questionData.type === 'multiple-choice') {
+                    const optionsDiv = document.createElement('div');
+                    optionsDiv.classList.add('multiple-choice');
+
+                    questionData.options.forEach(option => {
+                        const button = document.createElement('button');
+                        button.type = 'button';
+                        button.textContent = option;
+                        button.onclick = () => {
+                            document.querySelector(`input[name=${questionData.name}]`).value = option;
+                            playSoundEffect();
+                            setTimeout(() => {
+                                if (questionNumber < questions.length) {
+                                    displayQuestion(questionNumber + 1);
+                                } else {
+                                    submitForm();
+                                }
+                            }, 500); // Brief delay to show the gif
+                        };
+                        optionsDiv.appendChild(button);
+                    });
+
+                    const hiddenInput = document.createElement('input');
+                    hiddenInput.type = 'hidden';
+                    hiddenInput.name = questionData.name;
+                    hiddenInput.required = true;
+                    questionDiv.appendChild(hiddenInput);
+
+                    questionDiv.appendChild(optionsDiv);
+
+                    if (questionNumber > 1) {
+                        const prevButton = document.createElement('button');
+                        prevButton.type = 'button';
+                        prevButton.textContent = 'Previous';
+                        prevButton.onclick = () => {
+                            playSoundEffect();
+                            displayQuestion(questionNumber - 1);
+                        };
+                        questionDiv.appendChild(prevButton);
+                    }
                 }
 
                 form.appendChild(questionDiv);
