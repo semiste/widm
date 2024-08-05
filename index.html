@@ -6,8 +6,6 @@
     <title>Custom Form with Background Music</title>
     <style>
         body {
-            background: url('https://raw.githubusercontent.com/semiste/widm/main/background_exam.png') no-repeat center center fixed;
-            background-size: cover;
             margin: 0;
             font-family: Arial, sans-serif;
             display: flex;
@@ -112,6 +110,11 @@
             const questionData = questions.find(q => q.id === questionNumber);
 
             if (questionData) {
+                document.body.style.background = questionNumber === 1 
+                    ? "url('https://raw.githubusercontent.com/semiste/widm/main/background_front.png') no-repeat center center fixed"
+                    : "url('https://raw.githubusercontent.com/semiste/widm/main/background_exam.png') no-repeat center center fixed";
+                document.body.style.backgroundSize = 'cover';
+
                 const questionDiv = document.createElement('div');
                 questionDiv.classList.add('question', 'active');
                 questionDiv.id = `question${questionNumber}`;
@@ -159,6 +162,7 @@
                             playSoundEffect();
                             button.classList.add('active');
                             setTimeout(() => {
+                                button.classList.remove('active');
                                 if (questionNumber < questions.length) {
                                     displayQuestion(questionNumber + 1);
                                 } else {
