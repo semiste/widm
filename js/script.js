@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const questionForm = document.getElementById('question-form');
     const timestampElement = document.getElementById('timestamp');
     const delayBeforeNextQuestion = 1000; // Adjust delay to match the GIF animation time
-    const googleWebAppURL = 'https://script.google.com/macros/s/AKfycbw9Iu5m1_FrPiLfXlNd6h4CXKDhs9GNnUBBC0zTaWTRGSC_ElLnGpUVWSldMqJj6LNf/exec'; // Replace with your Google Apps Script Web App URL
+    const googleWebAppURL = 'https://script.google.com/macros/s/AKfycbxn5t7VjmnJAq8Oi-KmY47JJeHtrDC5guVIUEMG9qFCm_Rl6Vu6ASPAzj6E5hcE79W-/exec'; // Replace with your Google Apps Script Web App URL
 
     let startTime;
 
@@ -35,8 +35,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     day: 'numeric', 
                     hour: '2-digit', 
                     minute: '2-digit', 
-                    second: '2-digit',
-                    timeZoneName: 'short' // Include time zone for better clarity
+                    second: '2-digit'
                 };
                 timestampElement.textContent = `Last build time: ${lastCommitDate.toLocaleString('en-US', options)}`;
             })
@@ -150,4 +149,5 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     updateTimestamp(); // Initial timestamp update
+
 });
