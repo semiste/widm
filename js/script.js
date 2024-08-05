@@ -5,37 +5,37 @@ document.addEventListener('DOMContentLoaded', function () {
     const questionForm = document.getElementById('question-form');
     const timestampElement = document.getElementById('timestamp');
     const delayBeforeNextQuestion = 1000; // Adjust delay to match the GIF animation time
-    const googleWebAppURL = 'https://script.google.com/macros/s/AKfycbwYALiVz5lqQWp-j-MKaWmtnliyZIPt2q8E84jYP5t8Nu9j2oj8Bt4WOV0ntjKOQeYN/exec'; // Replace with your Google Apps Script Web App URL
+    const googleWebAppURL = 'https://script.google.com/macros/s/AKfycbxn5t7VjmnJAq8Oi-KmY47JJeHtrDC5guVIUEMG9qFCm_Rl6Vu6ASPAzj6E5hcE79W-/exec'; // Replace with your Google Apps Script Web App URL
 
-    let startTime;
+    let startTime; // Variable to store the start time
+    let endTime;   // Variable to store the end time
 
-    function startTimer() {
-        startTime = new Date();
-    }
-
-    function getTimeTaken() {
-        const endTime = new Date();
-        return Math.round((endTime - startTime) / 1000); // Time in seconds
-    }
-
-    function startBackgroundMusic() {
-        backgroundMusic.play().catch(error => {
-            console.error('Error playing background music:', error);
-        });
-    }
-
+    // Update timestamp with the last commit time from GitHub API
     function updateTimestamp() {
         fetch('https://api.github.com/repos/semiste/widm/commits?per_page=1')
             .then(response => response.json())
             .then(data => {
                 const lastCommitDate = new Date(data[0].commit.committer.date);
                 const options = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' };
-                timestampElement.textContent = Last build time: ${lastCommitDate.toLocaleDateString('en-US', options)};
+                timestampElement.textContent = `Last build time: ${lastCommitDate.toLocaleDateString('en-US', options)}`;
             })
             .catch(error => {
                 console.error('Error fetching last commit time:', error);
                 timestampElement.textContent = 'Last build time: Unable to fetch';
             });
+    }
+
+    // Load questions from JSON
+    fetch('questions.json')
+        .then(response => response.json())
+        .then(questions => {
+            displayQuestions(questions);
+        });
+
+    function startBackgroundMusic() {
+        backgroundMusic.play().catch(error => {
+            console.error('Error playing background music:', error);
+        });
     }
 
     function showQuestion(index) {
@@ -52,21 +52,21 @@ document.addEventListener('DOMContentLoaded', function () {
         questions.forEach((question, index) => {
             const questionDiv = document.createElement('div');
             questionDiv.className = 'question';
-            questionDiv.id = question-${index};
+            questionDiv.id = `question-${index}`;
             questionDiv.style.display = index === 0 ? 'block' : 'none';
 
-            const questionHTML = 
+            const questionHTML = `
                 <img src="resources/background_exam.png" alt="Background Exam" class="background-image">
                 <div class="question-container">
                     <h2 style="color: white;">${question.text}</h2>
-                    ${question.options.map(option => 
+                    ${question.options.map(option => `
                         <button class="choice-button" data-answer="${option}">
                             <img src="resources/Button.png" class="button-img" data-state="default">
                             <span>${option}</span>
                         </button>
-                    ).join('')}
+                    `).join('')}
                 </div>
-            ;
+            `;
 
             questionDiv.innerHTML = questionHTML;
             container.appendChild(questionDiv);
@@ -99,23 +99,45 @@ document.addEventListener('DOMContentLoaded', function () {
         }, delayBeforeNextQuestion);
     }
 
-    function submitFormData() {
-        const formData = {
-            name: document.getElementById('name').value,
-            answers: [],
-            timeTaken: getTimeTaken() // Get the time taken to complete the test
-        };
+    function startTimer() {
+        startTime = new Date();
+    }
 
+    function stopTimer() {
+        endTime = new Date();
+    }
+
+    function calculateTimeTaken() {
+        if (startTime && endTime) {
+            const timeDiff = endTime - startTime; // Time difference in milliseconds
+            const minutes = Math.floor(timeDiff / 60000);
+            const seconds = ((timeDiff % 60000) / 1000).toFixed(0);
+            return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+        }
+        return '0:00';
+    }
+
+    function submitFormData() {
+        stopTimer(); // Stop the timer when submitting the form
+
+        const name = document.getElementById('name').value;
+        const answers = [];
         document.querySelectorAll('.choice-button.selected').forEach(button => {
-            formData.answers.push(button.dataset.answer);
+            answers.push(button.dataset.answer);
         });
+
+        const formData = {
+            name: name,
+            answers: answers,
+            timeTaken: calculateTimeTaken()
+        };
 
         fetch(googleWebAppURL, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
             },
-            body: JSON.stringify(formData)
+            body: JSON.stringify(formData),
         }).then(response => response.text())
         .then(text => {
             alert('Test submitted successfully!');
@@ -133,12 +155,11 @@ document.addEventListener('DOMContentLoaded', function () {
             questionForm.style.display = 'block';
             startBackgroundMusic(); // Start background music
             updateTimestamp(); // Update timestamp on start
-            startTimer(); // Start timer
+            startTimer(); // Start the timer
         } else {
             alert('Please enter your name.');
         }
     });
 
     updateTimestamp(); // Initial timestamp update
-
 });
