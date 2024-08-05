@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const questionForm = document.getElementById('question-form');
     const timestampElement = document.getElementById('timestamp');
     const delayBeforeNextQuestion = 1000; // Adjust delay to match the GIF animation time
+    const googleWebAppURL = 'YOUR_WEB_APP_URL'; // Replace with your Google Apps Script Web App URL
 
     // Update timestamp on page load
     function updateTimestamp() {
@@ -47,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const questionHTML = `
                 <img src="resources/background_exam.png" alt="Background Exam" class="background-image">
                 <div class="question-container">
-                    <h2>${question.text}</h2>
+                    <h2 style="color: white;">${question.text}</h2>
                     ${question.options.map(option => `
                         <button class="choice-button" data-answer="${option}">
                             <img src="resources/Button.png" class="button-img" data-state="default">
@@ -89,22 +90,29 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function submitFormData() {
-        const formData = new FormData();
+        const formData = {
+            name: document.getElementById('name').value,
+            answers: []
+        };
+
         // Collect data from form elements
         document.querySelectorAll('.choice-button').forEach(button => {
             if (button.classList.contains('selected')) {
-                formData.append('answers', button.dataset.answer);
+                formData.answers.push(button.dataset.answer);
             }
         });
 
-        fetch('YOUR_WEB_APP_URL', { // Replace with your Google Apps Script Web App URL
+        fetch(googleWebAppURL, { // Replace with your Google Apps Script Web App URL
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(Object.fromEntries(formData)),
+            body: JSON.stringify(formData),
         }).then(response => {
+            return response.text(); // Read the response from the server
+        }).then(text => {
             alert('Test submitted successfully!');
+            console.log(text); // Log the response for troubleshooting
         }).catch(error => {
             console.error('Error:', error);
             alert('There was an error submitting your test.');
