@@ -6,7 +6,7 @@
     <title>Custom Form with Background Music</title>
     <style>
         body {
-            background: url('https://raw.githubusercontent.com/your-username/your-repo/main/background-image.jpg') no-repeat center center fixed;
+            background: url('https://raw.githubusercontent.com/semiste/widm/main/slime.png') no-repeat center center fixed;
             background-size: cover;
             margin: 0;
             font-family: Arial, sans-serif;
@@ -47,25 +47,26 @@
     </style>
 </head>
 <body>
-    <audio id="backgroundMusic" src="https://raw.githubusercontent.com/your-username/your-repo/main/background-music.mp3" autoplay loop></audio>
+    <audio id="backgroundMusic" src="https://raw.githubusercontent.com/semiste/widm/main/ludibrium_steal.mp3" autoplay loop></audio>
+    <audio id="soundEffect" src="https://raw.githubusercontent.com/semiste/widm/main/wahoo_test.wav"></audio>
     <div class="container">
         <form id="customForm">
             <div class="question active" id="question1">
                 <h2>What is your name?</h2>
                 <input type="text" id="name" name="name" required>
-                <button type="button" onclick="startTimer(); showQuestion(2)">Next</button>
+                <button type="button" onclick="startTimer(); showQuestion(2); playSoundEffect()">Next</button>
             </div>
             <div class="question" id="question2">
                 <h2>Question 2</h2>
                 <input type="text" name="answer2" required>
-                <button type="button" onclick="nextQuestion(3)">Next</button>
-                <button type="button" onclick="prevQuestion(1)">Previous</button>
+                <button type="button" onclick="nextQuestion(3); playSoundEffect()">Next</button>
+                <button type="button" onclick="prevQuestion(1); playSoundEffect()">Previous</button>
             </div>
             <div class="question" id="question3">
                 <h2>Question 3</h2>
                 <input type="text" name="answer3" required>
-                <button type="button" onclick="submitForm()">Submit</button>
-                <button type="button" onclick="prevQuestion(2)">Previous</button>
+                <button type="button" onclick="submitForm(); playSoundEffect()">Submit</button>
+                <button type="button" onclick="prevQuestion(2); playSoundEffect()">Previous</button>
             </div>
         </form>
     </div>
@@ -96,19 +97,20 @@
             const elapsedTime = (endTime - startTime) / 1000; // Time in seconds
             alert(`Form submitted! Time taken: ${elapsedTime} seconds`);
 
-            // Collect form data
             const formData = new FormData(document.getElementById('customForm'));
             const data = {};
             formData.forEach((value, key) => { data[key] = value });
 
-            // Export data to a file or service
             exportData(data);
         }
 
         function exportData(data) {
-            // Example: Send data to a service like Google Sheets or GitHub
             console.log('Data to be exported:', data);
             // Implement your data export logic here
+        }
+
+        function playSoundEffect() {
+            document.getElementById('soundEffect').play();
         }
     </script>
 </body>
