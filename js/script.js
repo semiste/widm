@@ -3,37 +3,71 @@ document.addEventListener('DOMContentLoaded', function () {
     const startButton = document.getElementById('start-button');
     const nameQuestion = document.getElementById('name-question');
     const questionForm = document.getElementById('question-form');
-    const choiceButtons = document.querySelectorAll('.choice-button');
-    
-    let currentQuestionIndex = 0;
-    const questions = document.querySelectorAll('.question');
-    const delayBeforeNextQuestion = 1000; // Delay in milliseconds (adjust as needed)
+    const delayBeforeNextQuestion = 1000; // Adjust delay to match the GIF animation time
+
+    // Load questions from JSON
+    fetch('questions.json')
+        .then(response => response.json())
+        .then(questions => {
+            displayQuestions(questions);
+        });
 
     function startBackgroundMusic() {
         backgroundMusic.play();
     }
 
     function showQuestion(index) {
+        const questions = document.querySelectorAll('.question');
         questions.forEach((q, i) => {
             q.style.display = i === index ? 'block' : 'none';
+        });
+    }
+
+    function displayQuestions(questions) {
+        const container = document.getElementById('question-form');
+        container.innerHTML = '';
+
+        questions.forEach((question, index) => {
+            const questionDiv = document.createElement('div');
+            questionDiv.className = 'question';
+            questionDiv.id = `question-${index}`;
+            questionDiv.style.display = index === 0 ? 'block' : 'none';
+
+            const questionHTML = `
+                <img src="resources/background_exam.png" alt="Background Exam">
+                <h2 style="color: white;">${question.text}</h2>
+                ${question.options.map(option => `
+                    <button class="choice-button" data-answer="${option}">
+                        <img src="resources/Button.png" class="button-img" data-state="default">
+                        <span>${option}</span>
+                    </button>
+                `).join('')}
+            `;
+
+            questionDiv.innerHTML = questionHTML;
+            container.appendChild(questionDiv);
+        });
+
+        document.querySelectorAll('.choice-button').forEach(button => {
+            button.addEventListener('click', handleChoiceClick);
         });
     }
 
     function handleChoiceClick(event) {
         const button = event.currentTarget;
         const img = button.querySelector('.button-img');
-        img.src = 'abutton.gif'; // Change to gif image
+        img.src = 'resources/aButton.gif'; // Change to gif image
         
         // Play sound effect
-        const clickSound = new Audio('klik.wav');
+        const clickSound = new Audio('resources/klik.wav');
         clickSound.play();
 
         // Delay before showing the next question
         setTimeout(() => {
-            img.src = 'button.png'; // Change back to default image
-            currentQuestionIndex++;
-            if (currentQuestionIndex < questions.length) {
-                showQuestion(currentQuestionIndex);
+            img.src = 'resources/Button.png'; // Change back to default image
+            const currentQuestionIndex = Array.from(button.closest('.question').parentElement.children).indexOf(button.closest('.question'));
+            if (currentQuestionIndex + 1 < document.querySelectorAll('.question').length) {
+                showQuestion(currentQuestionIndex + 1);
             } else {
                 // Handle form submission here
                 submitFormData();
@@ -70,13 +104,8 @@ document.addEventListener('DOMContentLoaded', function () {
             nameQuestion.style.display = 'none';
             questionForm.style.display = 'block';
             startBackgroundMusic();
-            showQuestion(currentQuestionIndex);
         } else {
             alert('Please enter your name.');
         }
-    });
-
-    choiceButtons.forEach(button => {
-        button.addEventListener('click', handleChoiceClick);
     });
 });
