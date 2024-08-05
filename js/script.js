@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function () {
             questionDiv.style.display = index === 0 ? 'block' : 'none';
 
             const questionHTML = `
-                <div class="question-container">
+                <div class="question-box">
                     <h2>${question.text}</h2>
                     ${createAnswerButtons(question.options)}
                 </div>
@@ -55,12 +55,10 @@ document.addEventListener('DOMContentLoaded', function () {
         document.querySelectorAll('.choice-button').forEach(button => {
             button.addEventListener('click', handleChoiceClick);
         });
-
-        adjustButtonTextSize(); // Adjust the font size of answer texts
     }
 
     function createAnswerButtons(options) {
-        const columns = Math.min(Math.ceil(options.length / 2), 2);
+        const columnCount = Math.min(Math.ceil(options.length / 2), 2);
         const columnButtons = [[], []];
 
         options.forEach((option, index) => {
@@ -68,12 +66,13 @@ document.addEventListener('DOMContentLoaded', function () {
             columnButtons[column].push(option);
         });
 
-        return columnButtons.map(buttons => `
-            <div class="column">
+        const columnWidth = (100 / columnCount) + '%'; // Width of each column
+        return columnButtons.map((buttons, columnIndex) => `
+            <div class="column" style="margin-${columnIndex === 0 ? 'left' : 'right'}: 10%; width: ${columnWidth};">
                 ${buttons.map((option, optIndex) => `
                     <button class="choice-button" data-answer="${String.fromCharCode(65 + optIndex)}">
-                        <img src="resources/Button.png" class="button-img" data-state="default">
                         <span>${option}</span>
+                        <img src="resources/Button.png" class="button-img" data-state="default">
                     </button>
                 `).join('')}
             </div>
