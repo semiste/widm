@@ -7,14 +7,16 @@
     },
     {
         "id": 2,
-        "question": "Question aa",
-        "type": "text",
-        "name": "answer2"
+        "question": "What is the capital of France?",
+        "type": "multiple-choice",
+        "name": "capitalOfFrance",
+        "options": ["Paris", "London", "Berlin", "Rome"]
     },
     {
         "id": 3,
-        "question": "Question 3",
-        "type": "text",
-        "name": "answer3"
+        "question": "Which planet is known as the Red Planet?",
+        "type": "multiple-choice",
+        "name": "redPlanet",
+        "options": ["Mars", "Venus", "Jupiter", "Saturn"]
     }
 ]
