@@ -41,6 +41,7 @@ function displayQuestions(questions) {
         questionDiv.id = `question-${index}`;
         questionDiv.style.display = index === 0 ? 'block' : 'none';
 
+        // Create question HTML
         const questionHTML = `
             <h2>${question.text}</h2>
             ${question.options.map((option, i) => `
@@ -59,8 +60,7 @@ function displayQuestions(questions) {
         button.addEventListener('click', handleChoiceClick);
     });
 }
-
-
+    
     function createAnswerButtons(options) {
         const numOptions = options.length;
         const midPoint = Math.ceil(numOptions / 2);
