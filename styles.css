@@ -23,7 +23,7 @@ html, body {
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Ensures the image covers the full area without distortion */
+    object-fit: cover;
     z-index: -1;
 }
 
@@ -31,33 +31,41 @@ html, body {
     text-align: center;
     color: white;
     position: relative;
-    z-index: 1; /* Ensure it appears above the background image */
+    z-index: 1;
 }
 
 .question-box {
-    background: transparent; /* Make question box invisible */
+    background: transparent;
     padding: 20px;
     border-radius: 10px;
     width: 80%;
     max-width: 800px;
-    color: white; /* Set font color to white */
-    box-shadow: none; /* Remove any box-shadow if present */
+    color: white;
+    box-shadow: none;
 }
 
 #question-form {
     position: relative;
-    z-index: 1; /* Ensure it appears above the background image */
-    color: white; /* Set font color to white */
+    z-index: 1;
+    color: white;
     display: flex;
-    justify-content: space-between; /* Space out the columns */
+    justify-content: space-between;
     flex-wrap: wrap;
-    gap: 20px; /* Add some space between columns */
+    gap: 20px;
 }
 
 .column {
     display: flex;
     flex-direction: column;
-    width: 45%; /* Adjust width for two columns */
+    width: 45%;
+}
+
+.column-left {
+    margin-left: 5%; /* Offset from left */
+}
+
+.column-right {
+    margin-left: 5%; /* Offset from middle */
 }
 
 .choice-button {
@@ -67,33 +75,24 @@ html, body {
     border: none;
     background: transparent;
     cursor: pointer;
-    color: white; /* Set font color to white */
-    font-size: 1.2em; /* Slightly increase font size */
-    position: relative; /* For consistent alignment of button images */
+    color: white;
+    font-size: 1.2em;
 }
 
 .choice-button img {
-    width: 40px; /* Adjust width of the button image */
+    width: 40px;
     height: auto;
-    margin-right: 10px; /* Space between the image and the text */
+    margin-right: 10px;
 }
 
 .choice-button span {
     display: inline-block;
-    vertical-align: middle; /* Align text with image */
-}
-
-.column:nth-child(odd) {
-    margin-left: 10%; /* Offset first column from the left */
-}
-
-.column:nth-child(even) {
-    margin-left: 10%; /* Offset second column from the middle */
+    vertical-align: middle;
 }
 
 @media (max-width: 600px) {
     .choice-button {
-        flex-direction: column; /* Stack image and text vertically on small screens */
+        flex-direction: column;
         align-items: center;
         width: 100%;
     }
@@ -104,7 +103,7 @@ html, body {
     }
 
     .column {
-        width: 100%; /* Full width for columns on small screens */
-        margin-left: 0; /* Remove margin for small screens */
+        width: 100%;
+        margin-left: 0;
     }
 }
