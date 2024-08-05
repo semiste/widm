@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const questionForm = document.getElementById('question-form');
     const timestampElement = document.getElementById('timestamp');
     const delayBeforeNextQuestion = 1000; // Adjust delay to match the GIF animation time
-    const googleWebAppURL = 'https://script.google.com/macros/s/AKfycbxn5t7VjmnJAq8Oi-KmY47JJeHtrDC5guVIUEMG9qFCm_Rl6Vu6ASPAzj6E5hcE79W-/exec'; // Replace with your Google Apps Script Web App URL
+    const googleWebAppURL = 'https://script.google.com/macros/s/AKfycby_UNicqOACprPcMzMrC7JNwsJ2RDbIgzCE0RC7aAdqHs2DIaQEd5R_WsAa0H6jyKMs/exec'; // Replace with your Google Apps Script Web App URL
 
     let startTime;
 
@@ -111,39 +111,35 @@ document.addEventListener('DOMContentLoaded', function () {
         }, delayBeforeNextQuestion);
     }
 
-    function submitFormData() {
-        const nameElement = document.getElementById('name');
-        if (!nameElement) {
-            console.error('Name input element not found.');
-            alert('Error: Name input element missing.');
-            return;
-        }
+function submitFormData() {
+    const formData = {
+        name: document.getElementById('name').value,
+        answers: [],
+        timeTaken: getTimeTaken() // Get the time taken to complete the test
+    };
 
-        const formData = {
-            name: nameElement.value,
-            answers: [],
-            timeTaken: getTimeTaken() // Get the time taken to complete the test
-        };
+    document.querySelectorAll('.choice-button.selected').forEach(button => {
+        formData.answers.push(button.dataset.answer);
+    });
 
-        document.querySelectorAll('.choice-button.selected').forEach(button => {
-            formData.answers.push(button.dataset.answer);
-        });
+    fetch(googleWebAppURL, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+    })
+    .then(response => response.text())
+    .then(text => {
+        alert('Test submitted successfully!');
+        console.log(text);
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('There was an error submitting your test.');
+    });
+}
 
-        fetch(googleWebAppURL, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(formData)
-        }).then(response => response.text())
-        .then(text => {
-            alert('Test submitted successfully!');
-            console.log(text);
-        }).catch(error => {
-            console.error('Error:', error);
-            alert('There was an error submitting your test.');
-        });
-    }
 
     startButton.addEventListener('click', function () {
         const name = document.getElementById('name').value;
