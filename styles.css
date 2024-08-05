@@ -48,14 +48,15 @@ html, body {
     z-index: 1; /* Ensure it appears above the background image */
     color: white; /* Set font color to white */
     display: flex;
+    justify-content: center; /* Center columns */
     flex-wrap: wrap;
-    justify-content: space-between; /* Distribute columns evenly */
+    gap: 20px; /* Add some space between columns */
 }
 
 .column {
     display: flex;
     flex-direction: column;
-    width: 48%; /* Adjust width to leave some space between columns */
+    width: 45%; /* Adjust width for two columns */
 }
 
 .choice-button {
@@ -70,7 +71,7 @@ html, body {
 }
 
 .choice-button img {
-    width: 50px; /* Adjust width of the button image */
+    width: 40px; /* Adjust width of the button image */
     height: auto;
     margin-right: 10px; /* Space between the image and the text */
 }
@@ -78,6 +79,14 @@ html, body {
 .choice-button span {
     display: inline-block;
     vertical-align: middle; /* Align text with image */
+}
+
+.column:nth-child(odd) {
+    margin-left: 10%; /* Offset first column from the left */
+}
+
+.column:nth-child(even) {
+    margin-left: 10%; /* Offset second column from the middle */
 }
 
 @media (max-width: 600px) {
@@ -90,5 +99,10 @@ html, body {
     .choice-button img {
         margin-right: 0;
         margin-bottom: 5px;
+    }
+
+    .column {
+        width: 100%; /* Full width for columns on small screens */
+        margin-left: 0; /* Remove margin for small screens */
     }
 }
