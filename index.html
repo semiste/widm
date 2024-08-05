@@ -3,34 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Custom Test Form</title>
+    <title>Quiz App</title>
     <link rel="stylesheet" href="styles.css">
-    <meta name="build-time" content="2024-08-05T12:00:00Z"> <!-- Manually update this -->
 </head>
 <body>
-    <!-- Background Music -->
-    <audio id="background-music" src="resources/test.mp3" preload="auto" loop></audio>
-    
-    <!-- Test Form -->
-    <div id="form-container">
-        <!-- Name Input Section -->
-        <div id="name-question">
-            <img src="resources/background_front.png" alt="Background Front" class="background-image">
-            <div class="question-container">
-                <h2>Please enter your name:</h2>
-                <input type="text" id="name" required>
-                <button id="start-button">Start Test</button>
-                <!-- Timestamp Display -->
-                <div id="timestamp"></div>
-            </div>
-        </div>
-
-        <!-- Multiple Choice Questions Section -->
-        <div id="question-form" style="display: none;">
-            <!-- Questions will be loaded dynamically here -->
-        </div>
+    <audio id="background-music" src="resources/background-music.mp3" loop></audio>
+    <div id="name-question">
+        <input type="text" id="name" placeholder="Enter your name">
+        <button id="start-button">Start</button>
     </div>
-    
-    <script src="js/script.js"></script>
+    <div id="question-form" style="display: none;">
+        <!-- Questions will be dynamically injected here -->
+    </div>
+    <div id="timestamp"></div>
+    <script src="script.js"></script>
 </body>
 </html>
