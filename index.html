@@ -3,235 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Custom Form with Background Music</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            overflow: hidden;
-        }
-        .container {
-            width: 100%;
-            max-width: 600px;
-            box-sizing: border-box;
-            text-align: center;
-        }
-        .question {
-            display: none;
-        }
-        .question.active {
-            display: block;
-        }
-        .multiple-choice {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-        }
-        .multiple-choice .option {
-            display: flex;
-            align-items: center;
-            margin: 10px 0;
-        }
-        .multiple-choice .option button {
-            background: url('https://raw.githubusercontent.com/semiste/widm/main/Button.png') no-repeat center center;
-            background-size: cover;
-            border: none;
-            width: 50px;
-            height: 50px;
-            margin-right: 10px;
-            cursor: pointer;
-        }
-        .multiple-choice .option button.active {
-            background: url('https://raw.githubusercontent.com/semiste/widm/main/aButton.gif') no-repeat center center;
-            background-size: cover;
-        }
-        .multiple-choice .option span {
-            font-size: 18px;
-            color: white;
-        }
-        .text-input {
-            padding: 20px;
-            border: 2px solid black;
-            border-radius: 8px;
-            background: rgba(0, 0, 0, 0.8);
-            color: white;
-        }
-        .text-input input {
-            padding: 10px;
-            width: 80%;
-            margin-top: 10px;
-            border-radius: 4px;
-            border: none;
-            font-size: 16px;
-            margin-bottom: 20px;
-        }
-        button {
-            margin-top: 20px;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 4px;
-            background-color: #007bff;
-            color: white;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #0056b3;
-        }
-    </style>
+    <title>Custom Test Form</title>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <audio id="backgroundMusic" src="https://raw.githubusercontent.com/semiste/widm/main/test.mp3" loop></audio>
-    <audio id="soundEffect" src="https://raw.githubusercontent.com/semiste/widm/main/klik.wav"></audio>
-    <div class="container">
-        <form id="customForm"></form>
+    <!-- Background Music -->
+    <audio id="background-music" src="ludibrium_steal.mp3" preload="auto"></audio>
+    
+    <!-- Test Form -->
+    <div id="form-container">
+        <!-- Name Input Section -->
+        <div id="name-question">
+            <img src="background_front.png" alt="Background Front">
+            <h2>Please enter your name:</h2>
+            <input type="text" id="name" required>
+            <button id="start-button">Start Test</button>
+        </div>
+
+        <!-- Multiple Choice Questions Section -->
+        <div id="question-form" style="display: none;">
+            <div class="question" id="question-1">
+                <img src="background_exam.png" alt="Background Exam">
+                <h2>Question 1:</h2>
+                <button class="choice-button" data-answer="Option1">
+                    <img src="button.png" class="button-img" data-state="default">
+                    <span>Option 1</span>
+                </button>
+                <button class="choice-button" data-answer="Option2">
+                    <img src="button.png" class="button-img" data-state="default">
+                    <span>Option 2</span>
+                </button>
+                <!-- Add more options if needed -->
+            </div>
+
+            <div class="question" id="question-2" style="display: none;">
+                <img src="background_exam.png" alt="Background Exam">
+                <h2>Question 2:</h2>
+                <button class="choice-button" data-answer="Option3">
+                    <img src="button.png" class="button-img" data-state="default">
+                    <span>Option 3</span>
+                </button>
+                <button class="choice-button" data-answer="Option4">
+                    <img src="button.png" class="button-img" data-state="default">
+                    <span>Option 4</span>
+                </button>
+                <!-- Add more options if needed -->
+            </div>
+            
+            <!-- Add more questions as needed -->
+
+        </div>
     </div>
-    <script>
-        let startTime = 0;
-        let questions = [];
-        const animationDelay = 1000; // Set delay time equal to animation duration of the GIF
-
-        document.addEventListener('DOMContentLoaded', () => {
-            fetch('https://raw.githubusercontent.com/semiste/widm/main/questions.json')
-                .then(response => response.json())
-                .then(data => {
-                    questions = data;
-                    displayQuestion(1);
-                })
-                .catch(error => console.error('Error loading questions:', error));
-        });
-
-        function displayQuestion(questionNumber) {
-            const form = document.getElementById('customForm');
-            form.innerHTML = '';
-            const questionData = questions.find(q => q.id === questionNumber);
-
-            if (questionData) {
-                document.body.style.background = questionNumber === 1 
-                    ? "url('https://raw.githubusercontent.com/semiste/widm/main/background_front.png') no-repeat center center fixed"
-                    : "url('https://raw.githubusercontent.com/semiste/widm/main/background_exam.png') no-repeat center center fixed";
-                document.body.style.backgroundSize = 'cover';
-
-                const questionDiv = document.createElement('div');
-                questionDiv.classList.add('question', 'active');
-                questionDiv.id = `question${questionNumber}`;
-
-                const questionTitle = document.createElement('h2');
-                questionTitle.textContent = questionData.question;
-                questionDiv.appendChild(questionTitle);
-
-                if (questionData.type === 'text') {
-                    const textDiv = document.createElement('div');
-                    textDiv.classList.add('text-input');
-
-                    const input = document.createElement('input');
-                    input.type = questionData.type;
-                    input.name = questionData.name;
-                    input.required = true;
-                    textDiv.appendChild(input);
-
-                    const nextButton = document.createElement('button');
-                    nextButton.type = 'button';
-                    nextButton.textContent = questionNumber < questions.length ? 'Next' : 'Submit';
-                    nextButton.onclick = () => {
-                        if (questionNumber === 1) startTimer();
-                        playSoundEffect();
-                        if (questionNumber < questions.length) {
-                            displayQuestion(questionNumber + 1);
-                        } else {
-                            submitForm();
-                        }
-                    };
-                    textDiv.appendChild(nextButton);
-                    questionDiv.appendChild(textDiv);
-                } else if (questionData.type === 'multiple-choice') {
-                    const optionsDiv = document.createElement('div');
-                    optionsDiv.classList.add('multiple-choice');
-
-                    questionData.options.forEach(option => {
-                        const optionDiv = document.createElement('div');
-                        optionDiv.classList.add('option');
-
-                        const button = document.createElement('button');
-                        button.type = 'button';
-                        button.onclick = () => {
-                            document.querySelector(`input[name=${questionData.name}]`).value = option;
-                            playSoundEffect();
-                            button.classList.add('active');
-                            setTimeout(() => {
-                                button.classList.remove('active');
-                                if (questionNumber < questions.length) {
-                                    displayQuestion(questionNumber + 1);
-                                } else {
-                                    submitForm();
-                                }
-                            }, animationDelay); // Delay to show the gif animation
-                        };
-                        optionDiv.appendChild(button);
-
-                        const span = document.createElement('span');
-                        span.textContent = option;
-                        optionDiv.appendChild(span);
-
-                        optionsDiv.appendChild(optionDiv);
-                    });
-
-                    const hiddenInput = document.createElement('input');
-                    hiddenInput.type = 'hidden';
-                    hiddenInput.name = questionData.name;
-                    hiddenInput.required = true;
-                    questionDiv.appendChild(hiddenInput);
-
-                    questionDiv.appendChild(optionsDiv);
-
-                    if (questionNumber > 1) {
-                        const prevButton = document.createElement('button');
-                        prevButton.type = 'button';
-                        prevButton.textContent = 'Previous';
-                        prevButton.onclick = () => {
-                            playSoundEffect();
-                            displayQuestion(questionNumber - 1);
-                        };
-                        questionDiv.appendChild(prevButton);
-                    }
-                }
-
-                form.appendChild(questionDiv);
-            }
-        }
-
-        function startTimer() {
-            startTime = Date.now();
-            playBackgroundMusic();
-        }
-
-        function submitForm() {
-            const endTime = Date.now();
-            const elapsedTime = (endTime - startTime) / 1000; // Time in seconds
-            alert(`Form submitted! Time taken: ${elapsedTime} seconds`);
-
-            const formData = new FormData(document.getElementById('customForm'));
-            const data = {};
-            formData.forEach((value, key) => { data[key] = value });
-
-            exportData(data);
-        }
-
-        function exportData(data) {
-            console.log('Data to be exported:', data);
-            // Implement your data export logic here
-        }
-
-        function playBackgroundMusic() {
-            document.getElementById('backgroundMusic').play();
-        }
-
-        function playSoundEffect() {
-            document.getElementById('soundEffect').play();
-        }
-    </script>
+    
+    <script src="js/script.js"></script>
 </body>
 </html>
