@@ -35,7 +35,7 @@ html, body {
 }
 
 .question-box {
-    background: transparent;
+    background: transparent; /* Invisible background */
     padding: 20px;
     border-radius: 10px;
     width: 80%;
@@ -45,9 +45,6 @@ html, body {
 }
 
 #question-form {
-    position: relative;
-    z-index: 1;
-    color: white;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
