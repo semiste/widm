@@ -1,66 +1,84 @@
+/* General Styles */
 body {
-    background: url('https://drive.google.com/uc?export=view&id=1KLfv8-Hmqala9auzGGxY6CfBmEBEI2NJ') no-repeat center center fixed;
-    background-size: cover;
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
     margin: 0;
+    font-family: Arial, sans-serif;
 }
 
-.container {
-    background: rgba(255, 255, 255, 0.9);
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+#form-container {
+    position: relative;
     width: 100%;
-    max-width: 500px;
+    height: 100vh;
 }
 
-h1 {
+#name-question, #question-form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     text-align: center;
 }
 
-form {
+#name-question {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    background-color: black;
+    padding: 20px;
+    border-radius: 10px;
 }
 
-label {
-    margin-top: 10px;
-}
-
-input[type="text"],
-input[type="email"],
-textarea {
-    width: 100%;
-    padding: 8px;
-    margin-top: 5px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-}
-
-.radio-group {
-    display: flex;
-    flex-direction: column;
-    margin-top: 5px;
-}
-
-.radio-group label {
-    margin-bottom: 5px;
-}
-
-button {
-    margin-top: 20px;
-    padding: 10px;
-    border: none;
-    border-radius: 4px;
-    background-color: #007bff;
+#name-question h2, #name-question input, #name-question button {
     color: white;
-    cursor: pointer;
+    margin: 10px 0;
 }
 
-button:hover {
-    background-color: #0056b3;
+#question-form {
+    display: none;
+}
+
+.question-container {
+    position: relative;
+}
+
+.question {
+    display: none;
+}
+
+.background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.question h2 {
+    color: white;
+}
+
+.choice-button {
+    display: inline-block;
+    margin: 10px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    position: relative;
+}
+
+.choice-button img.button-img {
+    width: 150px; /* Adjust as needed */
+    height: auto;
+}
+
+.choice-button span {
+    color: white;
+    font-size: 1.2em;
+    vertical-align: middle;
+    margin-left: 10px;
+}
+
+.choice-button:hover .button-img {
+    opacity: 0.7;
 }
