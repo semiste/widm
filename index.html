@@ -17,10 +17,6 @@
             overflow: hidden;
         }
         .container {
-            background: rgba(255, 255, 255, 0.9);
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             width: 100%;
             max-width: 600px;
             box-sizing: border-box;
@@ -35,20 +31,45 @@
         .multiple-choice {
             display: flex;
             flex-direction: column;
-            align-items: center;
+            align-items: flex-start;
         }
-        .multiple-choice button {
+        .multiple-choice .option {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+        }
+        .multiple-choice .option button {
             background: url('https://raw.githubusercontent.com/semiste/widm/main/Button.png') no-repeat center center;
             background-size: cover;
             border: none;
-            width: 200px;
+            width: 50px;
             height: 50px;
-            margin: 10px 0;
+            margin-right: 10px;
             cursor: pointer;
         }
-        .multiple-choice button:active {
+        .multiple-choice .option button:active {
             background: url('https://raw.githubusercontent.com/semiste/widm/main/aButton.gif') no-repeat center center;
             background-size: cover;
+        }
+        .multiple-choice .option span {
+            font-size: 18px;
+            color: white;
+        }
+        .text-input {
+            padding: 20px;
+            border: 2px solid black;
+            border-radius: 8px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+        }
+        .text-input input {
+            padding: 10px;
+            width: 80%;
+            margin-top: 10px;
+            border-radius: 4px;
+            border: none;
+            font-size: 16px;
+            margin-bottom: 20px;
         }
         button {
             margin-top: 20px;
@@ -73,6 +94,7 @@
     <script>
         let startTime = 0;
         let questions = [];
+        const animationDelay = 1000; // Set delay time equal to animation duration of the GIF
 
         document.addEventListener('DOMContentLoaded', () => {
             fetch('https://raw.githubusercontent.com/semiste/widm/main/questions.json')
@@ -88,7 +110,7 @@
             const form = document.getElementById('customForm');
             form.innerHTML = '';
             const questionData = questions.find(q => q.id === questionNumber);
-            
+
             if (questionData) {
                 const questionDiv = document.createElement('div');
                 questionDiv.classList.add('question', 'active');
@@ -99,11 +121,14 @@
                 questionDiv.appendChild(questionTitle);
 
                 if (questionData.type === 'text') {
+                    const textDiv = document.createElement('div');
+                    textDiv.classList.add('text-input');
+
                     const input = document.createElement('input');
                     input.type = questionData.type;
                     input.name = questionData.name;
                     input.required = true;
-                    questionDiv.appendChild(input);
+                    textDiv.appendChild(input);
 
                     const nextButton = document.createElement('button');
                     nextButton.type = 'button';
@@ -117,15 +142,18 @@
                             submitForm();
                         }
                     };
-                    questionDiv.appendChild(nextButton);
+                    textDiv.appendChild(nextButton);
+                    questionDiv.appendChild(textDiv);
                 } else if (questionData.type === 'multiple-choice') {
                     const optionsDiv = document.createElement('div');
                     optionsDiv.classList.add('multiple-choice');
 
                     questionData.options.forEach(option => {
+                        const optionDiv = document.createElement('div');
+                        optionDiv.classList.add('option');
+
                         const button = document.createElement('button');
                         button.type = 'button';
-                        button.textContent = option;
                         button.onclick = () => {
                             document.querySelector(`input[name=${questionData.name}]`).value = option;
                             playSoundEffect();
@@ -135,9 +163,15 @@
                                 } else {
                                     submitForm();
                                 }
-                            }, 500); // Brief delay to show the gif
+                            }, animationDelay); // Delay to show the gif animation
                         };
-                        optionsDiv.appendChild(button);
+                        optionDiv.appendChild(button);
+
+                        const span = document.createElement('span');
+                        span.textContent = option;
+                        optionDiv.appendChild(span);
+
+                        optionsDiv.appendChild(optionDiv);
                     });
 
                     const hiddenInput = document.createElement('input');
