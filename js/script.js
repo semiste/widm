@@ -1,10 +1,11 @@
 document.addEventListener('DOMContentLoaded', function () {
-    console.log('JavaScript is running');
-
     const backgroundMusic = document.getElementById('background-music');
     const startButton = document.getElementById('start-button');
     const nameQuestion = document.getElementById('name-question');
     const questionForm = document.getElementById('question-form');
+    const timestampElement = document.getElementById('timestamp');
+    const delayBeforeNextQuestion = 1000; // Adjust delay to match the GIF animation time
+    const googleWebAppURL = 'https://script.google.com/macros/s/AKfycbxn5t7VjmnJAq8Oi-KmY47JJeHtrDC5guVIUEMG9qFCm_Rl6Vu6ASPAzj6E5hcE79W-/exec'; // Replace with your Google Apps Script Web App URL
 
     let startTime;
 
@@ -25,6 +26,23 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    // Commenting out the updateTimestamp function to simplify debugging
+    /*
+    function updateTimestamp() {
+        fetch('https://api.github.com/repos/semiste/widm/commits?per_page=1')
+            .then(response => response.json())
+            .then(data => {
+                const lastCommitDate = new Date(data[0].commit.committer.date);
+                const options = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+                timestampElement.textContent = `Last build time: ${lastCommitDate.toLocaleDateString('en-US', options)}`;
+            })
+            .catch(error => {
+                console.error('Error fetching last commit time:', error);
+                timestampElement.textContent = 'Last build time: Unable to fetch';
+            });
+    }
+    */
+
     function showQuestion(index) {
         const questions = document.querySelectorAll('.question');
         questions.forEach((q, i) => {
@@ -43,10 +61,12 @@ document.addEventListener('DOMContentLoaded', function () {
             questionDiv.style.display = index === 0 ? 'block' : 'none';
 
             const questionHTML = `
+                <img src="resources/background_exam.png" alt="Background Exam" class="background-image">
                 <div class="question-container">
-                    <h2>${question.text}</h2>
+                    <h2 style="color: white;">${question.text}</h2>
                     ${question.options.map(option => `
                         <button class="choice-button" data-answer="${option}">
+                            <img src="resources/Button.png" class="button-img" data-state="default">
                             <span>${option}</span>
                         </button>
                     `).join('')}
@@ -63,13 +83,25 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function handleChoiceClick(event) {
-        console.log('Choice clicked');
         const button = event.currentTarget;
-        button.classList.toggle('selected');
         const img = button.querySelector('.button-img');
-        if (img) {
-            img.src = button.classList.contains('selected') ? 'resources/aButton.gif' : 'resources/Button.png'; // Change to gif image
-        }
+        img.src = 'resources/aButton.gif'; // Change to gif image
+        
+        // Play sound effect
+        const clickSound = new Audio('resources/klik.wav');
+        clickSound.play();
+
+        // Delay before showing the next question
+        setTimeout(() => {
+            img.src = 'resources/Button.png'; // Change back to default image
+            const currentQuestionIndex = Array.from(button.closest('.question').parentElement.children).indexOf(button.closest('.question'));
+            if (currentQuestionIndex + 1 < document.querySelectorAll('.question').length) {
+                showQuestion(currentQuestionIndex + 1);
+            } else {
+                // Handle form submission here
+                submitFormData();
+            }
+        }, delayBeforeNextQuestion);
     }
 
     function submitFormData() {
@@ -83,7 +115,7 @@ document.addEventListener('DOMContentLoaded', function () {
             formData.answers.push(button.dataset.answer);
         });
 
-        fetch('https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec', {
+        fetch(googleWebAppURL, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -99,27 +131,21 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    function start() {
-        console.log('Start button clicked');
-        nameQuestion.style.display = 'none';
-        questionForm.style.display = 'block';
-        startBackgroundMusic();
-        startTimer();
-        
-        // Example of displaying questions
-        const questions = [
-            { text: 'What is 2+2?', options: ['3', '4', '5'] },
-            { text: 'What is the capital of France?', options: ['Berlin', 'Madrid', 'Paris'] }
-        ];
-        displayQuestions(questions);
-    }
-
     startButton.addEventListener('click', function () {
         const name = document.getElementById('name').value;
         if (name.trim()) {
-            start();
+            nameQuestion.style.display = 'none';
+            questionForm.style.display = 'block';
+            startBackgroundMusic(); // Start background music
+            // Commenting out the updateTimestamp call to simplify debugging
+            // updateTimestamp(); // Update timestamp on start
+            startTimer(); // Start timer
         } else {
             alert('Please enter your name.');
         }
     });
+
+    // Commenting out the initial timestamp update to simplify debugging
+    // updateTimestamp(); // Initial timestamp update
+
 });
