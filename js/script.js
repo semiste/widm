@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function startTimer() {
         startTime = new Date();
+        console.log('Timer started');
     }
 
     function getTimeTaken() {
@@ -26,24 +27,8 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Commenting out the updateTimestamp function to simplify debugging
-    /*
-    function updateTimestamp() {
-        fetch('https://api.github.com/repos/semiste/widm/commits?per_page=1')
-            .then(response => response.json())
-            .then(data => {
-                const lastCommitDate = new Date(data[0].commit.committer.date);
-                const options = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' };
-                timestampElement.textContent = `Last build time: ${lastCommitDate.toLocaleDateString('en-US', options)}`;
-            })
-            .catch(error => {
-                console.error('Error fetching last commit time:', error);
-                timestampElement.textContent = 'Last build time: Unable to fetch';
-            });
-    }
-    */
-
     function showQuestion(index) {
+        console.log(`Showing question ${index}`);
         const questions = document.querySelectorAll('.question');
         questions.forEach((q, i) => {
             q.style.display = i === index ? 'block' : 'none';
@@ -80,13 +65,14 @@ document.addEventListener('DOMContentLoaded', function () {
         document.querySelectorAll('.choice-button').forEach(button => {
             button.addEventListener('click', handleChoiceClick);
         });
+        console.log('Questions displayed');
     }
 
     function handleChoiceClick(event) {
         const button = event.currentTarget;
         const img = button.querySelector('.button-img');
         img.src = 'resources/aButton.gif'; // Change to gif image
-        
+
         // Play sound effect
         const clickSound = new Audio('resources/klik.wav');
         clickSound.play();
@@ -132,20 +118,18 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     startButton.addEventListener('click', function () {
+        console.log('Start button clicked');
         const name = document.getElementById('name').value;
         if (name.trim()) {
             nameQuestion.style.display = 'none';
             questionForm.style.display = 'block';
             startBackgroundMusic(); // Start background music
-            // Commenting out the updateTimestamp call to simplify debugging
-            // updateTimestamp(); // Update timestamp on start
             startTimer(); // Start timer
         } else {
             alert('Please enter your name.');
         }
     });
 
-    // Commenting out the initial timestamp update to simplify debugging
-    // updateTimestamp(); // Initial timestamp update
-
+    // Initial call to displayQuestions for testing
+    // displayQuestions([{ text: 'Sample question?', options: ['Option 1', 'Option 2'] }]);
 });
