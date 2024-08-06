@@ -41,9 +41,10 @@ html, body {
     width: 80%;
     max-width: 800px;
     color: white;
-    position: relative; /* To position buttons inside it */
+    position: absolute; /* Changed to absolute */
     box-shadow: none;
-    text-align: center; /* Center the question text */
+    text-align: center;
+    top: 50px; /* Fixed position from the top */
 }
 
 h2 {
@@ -83,3 +84,16 @@ h2 {
 .button-position:nth-child(4) { top: 150px; left: calc(50% + 100px); }
 .button-position:nth-child(5) { top: 200px; left: 100px; }
 .button-position:nth-child(6) { top: 200px; left: calc(50% + 100px); }
+
+@media screen and (orientation:portrait) {
+    body {
+        transform: rotate(90deg);
+        transform-origin: left top;
+        width: 100vh; /* Use viewport height as width after rotation */
+        height: 100vw; /* Use viewport width as height after rotation */
+        overflow-x: hidden;
+        position: absolute;
+        top: 100%;
+        left: 0;
+    }
+}
