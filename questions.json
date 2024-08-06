@@ -1,7 +1,7 @@
 [
     {
         "text": "What is the capital of France?",
-        "options": ["Paris", "London", "Rome", "Berlin"]
+        "options": ["Paris", "London", "Rome"]
     },
     {
         "text": "Which planet is known as the Red Planet?",
@@ -21,6 +21,6 @@
     },
     {
         "text": "Which is the largest mammal?",
-        "options": ["Blue Whale", "Elephant", "Giraffe", "Shark"]
+        "options": ["Blue Whale", "Elephant", "Giraffe", "Shark","Shaco"]
     }
 ]
