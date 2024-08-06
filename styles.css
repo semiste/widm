@@ -44,6 +44,7 @@ html, body {
     position: relative; /* To position buttons inside it */
     box-shadow: none;
     text-align: left; /* Center the question text */
+    margin-top: -100px; /* Add margin to move the box down or adjust as needed */
 }
 
 h2 {
