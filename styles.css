@@ -36,14 +36,14 @@ html, body {
 
 .question-box {
     background: transparent; /* Invisible background */
-    padding: 20px;
+    padding: 120px;
     border-radius: 10px;
     width: 80%;
     max-width: 800px;
     color: white;
     position: relative; /* To position buttons inside it */
     box-shadow: none;
-    text-align: center; /* Center the question text */
+    text-align: left; /* Center the question text */
 }
 
 h2 {
