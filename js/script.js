@@ -56,6 +56,17 @@ document.addEventListener('DOMContentLoaded', function () {
             container.appendChild(questionDiv);
         });
 
+        // Position buttons based on their order
+        document.querySelectorAll('.choice-button').forEach((button, index) => {
+            const numButtons = document.querySelectorAll('.choice-button').length;
+            const midPoint = Math.ceil(numButtons / 2);
+            const column = index < midPoint ? 100 : window.innerWidth / 2 + 100; // Adjust to your required offset
+            const row = (index % midPoint) * 50 + 150; // 50px spacing between buttons, starting at 150px from top
+            button.style.position = 'absolute';
+            button.style.left = `${column}px`;
+            button.style.top = `${row}px`;
+        });
+
         document.querySelectorAll('.choice-button').forEach(button => {
             button.addEventListener('click', handleChoiceClick);
         });
