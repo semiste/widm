@@ -1,29 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz Application</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <div id="start-screen" class="screen">
-        <img src="resources/background_front.png" alt="Background Front" class="background-image">
-        <div class="input-container">
-            <h1>Enter Your Name</h1>
-            <input type="text" id="name" placeholder="Your Name">
-            <button id="start-button">Start</button>
-        </div>
-    </div>
+/* Styles for the rotate message */
+#rotate-message {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    z-index: 1000;
+}
 
-    <div id="question-screen" class="screen" style="display: none;">
-        <img src="resources/background_exam.png" alt="Background Exam" class="background-image">
-        <div class="question-box">
-            <div id="question-form"></div>
-        </div>
-    </div>
+/* Display rotate message in portrait mode */
+@media (orientation: portrait) {
+    #rotate-message {
+        display: block;
+    }
 
-    <audio id="background-music" src="resources/test.mp3" preload="auto"></audio>
-    <script src="js/script.js"></script>
-</body>
-</html>
+    #start-screen,
+    #question-screen {
+        display: none !important;
+    }
+}
