@@ -44,7 +44,12 @@ document.addEventListener('DOMContentLoaded', function () {
             // Create question HTML
             const questionHTML = `
                 <h2>${question.text}</h2>
-                ${createAnswerButtons(question.options)}
+                ${question.options.map((option, i) => `
+                    <div class="choice-button button-position" data-answer="${String.fromCharCode(65 + i)}">
+                        <img src="resources/Button.png" class="button-img" data-state="default">
+                        <span>${option}</span>
+                    </div>
+                `).join('')}
             `;
 
             questionDiv.innerHTML = questionHTML;
@@ -54,31 +59,6 @@ document.addEventListener('DOMContentLoaded', function () {
         document.querySelectorAll('.choice-button').forEach(button => {
             button.addEventListener('click', handleChoiceClick);
         });
-    }
-
-    function createAnswerButtons(options) {
-        const numOptions = options.length;
-        let buttonsHTML = '';
-
-        for (let i = 0; i < 6; i++) {
-            if (i < numOptions) {
-                buttonsHTML += `
-                    <div class="choice-button button-position" data-answer="${String.fromCharCode(65 + i)}">
-                        <img src="resources/Button.png" class="button-img" data-state="default">
-                        <span>${options[i]}</span>
-                    </div>
-                `;
-            } else {
-                buttonsHTML += `
-                    <div class="choice-button button-position" style="visibility: hidden;">
-                        <img src="resources/Button.png" class="button-img" data-state="default">
-                        <span></span>
-                    </div>
-                `;
-            }
-        }
-
-        return buttonsHTML;
     }
 
     function handleChoiceClick(event) {
@@ -115,4 +95,49 @@ document.addEventListener('DOMContentLoaded', function () {
 
         fetch(googleWebAppURL, {
             method: 'POST',
-           
+            headers: {
+                'Content-Type': 'text/plain;charset=utf-8'
+            },
+            body: JSON.stringify(formData),
+            redirect: 'follow'
+        }).then(response => response.text())
+        .then(text => {
+            alert('Test submitted successfully!');
+            console.log(text);
+            // Return to the start screen
+            resetToStartScreen();
+        }).catch(error => {
+            console.error('Error:', error);
+            alert('There was an error submitting your test.');
+        });
+    }
+
+    function resetToStartScreen() {
+        nameQuestion.style.display = 'flex';
+        questionForm.style.display = 'none';
+        document.getElementById('name').value = '';
+        answers = [];
+    }
+
+    startButton.addEventListener('click', function () {
+        const name = document.getElementById('name').value;
+        if (name.trim()) {
+            nameQuestion.style.display = 'none';
+            questionForm.style.display = 'block';
+            startBackgroundMusic(); // Start background music
+            startTimer(); // Start timer
+
+            fetch('questions.json')
+                .then(response => response.json())
+                .then(data => {
+                    displayQuestions(data);
+                })
+                .catch(error => {
+                    console.error('Error loading questions:', error);
+                    alert('Error loading questions.');
+                });
+        } else {
+            alert('Please enter your name.');
+        }
+    });
+});
