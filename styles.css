@@ -41,10 +41,9 @@ html, body {
     width: 80%;
     max-width: 800px;
     color: white;
-    position: absolute; /* Changed to absolute */
+    position: relative; /* To position buttons inside it */
     box-shadow: none;
-    text-align: center;
-    top: 50px; /* Fixed position from the top */
+    text-align: center; /* Center the question text */
 }
 
 h2 {
@@ -78,22 +77,36 @@ h2 {
     /* Placeholder class to set individual button positions */
 }
 
-.button-position:nth-child(1) { top: 100px; left: 100px; }
-.button-position:nth-child(2) { top: 100px; left: calc(50% + 100px); }
-.button-position:nth-child(3) { top: 150px; left: 100px; }
-.button-position:nth-child(4) { top: 150px; left: calc(50% + 100px); }
-.button-position:nth-child(5) { top: 200px; left: 100px; }
-.button-position:nth-child(6) { top: 200px; left: calc(50% + 100px); }
+.button-position:nth-child(1) { top: 150px; left: 100px; }
+.button-position:nth-child(2) { top: 150px; left: calc(50% + 100px); }
+.button-position:nth-child(3) { top: 200px; left: 100px; }
+.button-position:nth-child(4) { top: 200px; left: calc(50% + 100px); }
+.button-position:nth-child(5) { top: 250px; left: 100px; }
+.button-position:nth-child(6) { top: 250px; left: calc(50% + 100px); }
 
-@media screen and (orientation:portrait) {
-    body {
-        transform: rotate(90deg);
-        transform-origin: left top;
-        width: 100vh; /* Use viewport height as width after rotation */
-        height: 100vw; /* Use viewport width as height after rotation */
-        overflow-x: hidden;
-        position: absolute;
-        top: 100%;
-        left: 0;
+/* Styles for the rotate message */
+#rotate-message {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    z-index: 1000;
+}
+
+/* Display rotate message in portrait mode */
+@media (orientation: portrait) {
+    #rotate-message {
+        display: block;
+    }
+
+    #start-screen,
+    #question-screen {
+        display: none !important;
     }
 }
