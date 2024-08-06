@@ -55,7 +55,7 @@ h2 {
 .choice-button {
     display: flex;
     align-items: center;
-    position: absolute;
+    position: absolute; /* Use absolute positioning */
     cursor: pointer;
     font-size: 1.2em;
     color: white;
@@ -72,17 +72,13 @@ h2 {
     vertical-align: middle;
 }
 
-/* Position buttons based on their order */
-.button-position {
-    /* Placeholder class to set individual button positions */
-}
-
-.button-position:nth-child(1) { top: 150px; left: 100px; }
-.button-position:nth-child(2) { top: 150px; left: calc(50% + 100px); }
-.button-position:nth-child(3) { top: 200px; left: 100px; }
-.button-position:nth-child(4) { top: 200px; left: calc(50% + 100px); }
-.button-position:nth-child(5) { top: 250px; left: 100px; }
-.button-position:nth-child(6) { top: 250px; left: calc(50% + 100px); }
+/* Fixed position for buttons */
+.button-position:nth-child(1) { top: 100px; left: 100px; }
+.button-position:nth-child(2) { top: 100px; left: calc(50% + 100px); }
+.button-position:nth-child(3) { top: 150px; left: 100px; }
+.button-position:nth-child(4) { top: 150px; left: calc(50% + 100px); }
+.button-position:nth-child(5) { top: 200px; left: 100px; }
+.button-position:nth-child(6) { top: 200px; left: calc(50% + 100px); }
 
 /* Styles for the rotate message */
 #rotate-message {
