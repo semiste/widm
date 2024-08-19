@@ -1,47 +1,47 @@
 [
     {
-        "text": "Was de mol kleurenblind bij de opdracht \"Fabels\"?",
+        "text": "Had de mol problemen met het vinden van het huis bij de opdracht \"Poppenkast\"?",
         "options": ["Ja", "Nee"]
     },
     {
-        "text": "Waar woont de mol?",
-        "options": ["IJsselstein", "Nieuwegein", "Tilburg", "Utrecht", "Eindhoven"]
+        "text": "Hoe oud is de mol?",
+        "options": ["24", "25", "26", "27+"]
     },
     {
-        "text": "Had de mol een muts op bij de opdracht \"Beetje fris\"?",
-        "options": ["Nee", "Ja, één", "Ja, meerdere"]
-    },
-    {
-        "text": "Welke dieren kwamen voor in het verhaal van de mol bij de opdracht \"Fabels\"?",
-        "options": ["Leeuw en muis", "Kraai en vos", "Krekel en Mier", "Lam en Wolf", "Kikker en Os"]
-    },
-    {
-        "text": "Als hoeveelste ging de mol bij de opdracht \"Kaartenhuis\"?",
-        "options": ["1e of 2e", "3e of 4e", "5e of 6e", "Laatste"]
-    },
-    {
-        "text": "Is de mol een rascist?",
+        "text": "Heeft de mol boekjes gestolen?",
         "options": ["Ja", "Nee"]
     },
     {
-        "text": "Heeft de mol zijn verhaal grotendeels vertaald bij de opdracht \"Fabels\"?",
+        "text": "Heeft de mol drugs meegenomen?",
+        "options": ["Nee", "Ja, maar valt wel mee", "Ja, echt 5 jaar celstraf"]
+    },
+    {
+        "text": "Heeft de mol gelogen over de waarde van zijn eendjes bij de opdracht \"1000 eenden\"?",
         "options": ["Ja", "Nee"]
     },
     {
-        "text": "Is de mol eerder uitgestapt bij de opdracht \"Beetje fris\"?",
+        "text": "Hoe vaak is de mol nat geworden bij de opdracht \"1000 eenden\"?",
+        "options": ["Niet", "Éen keer", "Twee keer", "Meer dan twee keer"]
+    },
+    {
+        "text": "Hoeveel verschillen heeft de mol geraden bij de opdracht \"Poppenkast\"?",
+        "options": ["0", "1", "2", "3", "4+"]
+    },
+    {
+        "text": "Is er met een foto waarop de mol staat geld verloren bij de opdracht \"Volkstheater\"?",
         "options": ["Ja", "Nee"]
     },
     {
-        "text": "Ging de mol mee op de wereldreis naar de supermarkt?",
+        "text": "Heeft de mol gekookt voor de groep?",
         "options": ["Ja", "Nee"]
     },
     {
-        "text": "Heeft de mol iemand anders laten lijden bij de opdracht \"Beetje fris\"?",
-        "options": ["Ja", "Nee"]
+        "text": "Had de mol een grote of kleine verrekijker bij de opdracht \"Poppenkast\"?",
+        "options": ["Grote", "Kleine"]
     },
     {
-        "text": "Heeft de mol gezelschapsspellen meegenomen?",
-        "options": ["Ja", "Nee"]
+        "text": "Heeft de mol een grote of een kleine penis?",
+        "options": ["Grote", "Kleine", "Het hangt er meer vanaf hoe je hem gebruikt"]
     },
     {
         "text": "Wie is de mol?",
