@@ -1,47 +1,47 @@
 [
     {
-        "text": "Welke kleur had de mol tijdens de opdracht \"Ruimtevaarders\"?",
-        "options": ["Rood of oranje", "Licht of donker blauw", "Groen of geel", "Paars"]
+        "text": "Als hoeveelste koos de mol zijn meetinstrument bij de opdracht \"Meten is weten\"?",
+        "options": ["Eerste", "Tweede", "Derde"]
     },
     {
-        "text": "Welke auto zat de mol op de heenweg?",
-        "options": ["Honda", "Tesla", "Zolestar"]
-    },
-    {
-        "text": "Deed de mol zijn VR bril af tijdens de opdracht \"Ruimtevaarders\"?",
+        "text": "Ging de mol mee met het scouten / verkennen van de locaties?",
         "options": ["Ja", "Nee"]
     },
     {
-        "text": "Was de mol vergeten een sweater mee te nemen naar Bussang?",
+        "text": "Bij de opdracht \"Volkstheater\" Is er geld verdiend met een foto waarop de mol staat?",
         "options": ["Ja", "Nee"]
     },
     {
-        "text": "Was de mol aan het smimimiën over zijn VR bril tijdens de opdracht \"Ruimtevaarders\"?",
-        "options": ["Nee", "Een beetje", "Ja, echt veel"]
+        "text": "Wat voor sokken Had de mol aan bij het ontbijt?",
+        "options": ["Geen", "Grijs, wit, of zwart", "Andere kleur"]
     },
     {
-        "text": "Hoeveel geld voor de pot pakte de Mol bij de opdracht \"Kaartenhuis\"?",
-        "options": ["Minder dan -1 euro", "Tussen de -1 en 0 euro", "Tussen de 0 en 1 euro", "Meer dan 1 euro"]
-    },
-    {
-        "text": "Als hoeveelste mocht de mol zijn slaapkamer kiezen?",
-        "options": ["Eerste", "Tweede", "Derde", "Vierde", "Vijfde", "Zesde", "Laatste"]
-    },
-    {
-        "text": "Pakte de mol een joker bij de opdracht \"Kaartenhuis\"?",
+        "text": "Heeft de mol geld verloren door hardop te tellen bij de opdracht \"Meten is weten\"?",
         "options": ["Ja", "Nee"]
     },
     {
-        "text": "Liep de mol door tot het laatste station bij de opdracht \"Kaartenhuis\"?",
+        "text": "Hoe vaak heeft de mol switch geroepen bij de opdracht \"Meten is weten\"?",
+        "options": ["0-3 keer", "4-7 keer", "8-11 keer", "12-15 keer", "Meer dan 15 keer"]
+    },
+    {
+        "text": "Pakte de mol een joker bij de opdracht \"Ruimtevaarders\"?",
         "options": ["Ja", "Nee"]
     },
     {
-        "text": "Wat drinkt de mol het meest?",
-        "options": ["Wijn", "Sappie", "Frisdrank", "Energy"]
+        "text": "Zat de mol bij de groep kiezen of raden bij de opdracht \"Volkstheater\"?",
+        "options": ["Kiezen (4 man)", "Raden (2 man)"]
     },
     {
-        "text": "Hoeveel spacelampen heeft de mol mee?",
-        "options": ["0", "1", "2"]
+        "text": "Heeft de mol een vriendin?",
+        "options": ["Ja", "Nee", "Nee, maar wel een vriend"]
+    },
+    {
+        "text": "Heeft de mol een jointje gerookt tijdens de opdracht \"Meten is weten\"?",
+        "options": ["Ja", "Nee"]
+    },
+    {
+        "text": "Heeft de mol met de hand jonko's gedraaid deze vakantie? (Zonder jonko3000)",
+        "options": ["Ja", "Nee"]
     },
     {
         "text": "Wie is de mol?",
@@ -52,4 +52,3 @@
         "options": ["0", "1", "2", "3", "4"]
     }
 ]
-
