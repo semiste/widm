@@ -1,47 +1,48 @@
+
 [
     {
-        "text": "Was de mol kleurenblind bij de opdracht \"Fabels\"?",
+        "text": "Welke kleur had de mol tijdens de opdracht \"Ruimtevaarders\"?",
+        "options": ["Rood of oranje", "Licht of donker blauw", "Groen of geel", "Paars"]
+    },
+    {
+        "text": "Welke auto zat de mol op de heenweg?",
+        "options": ["Honda", "Tesla", "Zolestar"]
+    },
+    {
+        "text": "Deed de mol zijn VR bril af tijdens de opdracht \"Ruimtevaarders\"?",
         "options": ["Ja", "Nee"]
     },
     {
-        "text": "Waar woont de mol?",
-        "options": ["IJsselstein", "Nieuwegein", "Tilburg", "Utrecht", "Eindhoven"]
-    },
-    {
-        "text": "Had de mol een muts op bij de opdracht \"Beetje fris\"?",
-        "options": ["Nee", "Ja, één", "Ja, meerdere"]
-    },
-    {
-        "text": "Welke dieren kwamen voor in het verhaal van de mol bij de opdracht \"Fabels\"?",
-        "options": ["Leeuw en muis", "Kraai en vos", "Krekel en Mier", "Lam en Wolf", "Kikker en Os"]
-    },
-    {
-        "text": "Als hoeveelste ging de mol bij de opdracht \"Kaartenhuis\"?",
-        "options": ["1e of 2e", "3e of 4e", "5e of 6e", "Laatste"]
-    },
-    {
-        "text": "Is de mol een rascist?",
+        "text": "Was de mol vergeten een sweater mee te nemen naar Bussang?",
         "options": ["Ja", "Nee"]
     },
     {
-        "text": "Heeft de mol zijn verhaal grotendeels vertaald bij de opdracht \"Fabels\"?",
+        "text": "Was de mol aan het smimimiën over zijn VR bril tijdens de opdracht \"Ruimtevaarders\"?",
+        "options": ["Nee", "Een beetje", "Ja, echt veel"]
+    },
+    {
+        "text": "Hoeveel geld voor de pot pakte de Mol bij de opdracht \"Kaartenhuis\"?",
+        "options": ["Minder dan -1 euro", "Tussen de -1 en 0 euro", "Tussen de 0 en 1 euro", "Meer dan 1 euro"]
+    },
+    {
+        "text": "Als hoeveelste mocht de mol zijn slaapkamer kiezen?",
+        "options": ["Eerste", "Tweede", "Derde", "Vierde", "Vijfde", "Zesde", "Laatste"]
+    },
+    {
+        "text": "Pakte de mol een joker bij de opdracht \"Kaartenhuis\"?",
         "options": ["Ja", "Nee"]
     },
     {
-        "text": "Is de mol eerder uitgestapt bij de opdracht \"Beetje fris\"?",
+        "text": "Liep de mol door tot het laatste station bij de opdracht \"Kaartenhuis\"?",
         "options": ["Ja", "Nee"]
     },
     {
-        "text": "Ging de mol mee op de wereldreis naar de supermarkt?",
-        "options": ["Ja", "Nee"]
+        "text": "Wat drinkt de mol het meest?",
+        "options": ["Wijn", "Sappie", "Frisdrank", "Energy"]
     },
     {
-        "text": "Heeft de mol iemand anders laten lijden bij de opdracht \"Beetje fris\"?",
-        "options": ["Ja", "Nee"]
-    },
-    {
-        "text": "Heeft de mol gezelschapsspellen meegenomen?",
-        "options": ["Ja", "Nee"]
+        "text": "Hoeveel spacelampen heeft de mol mee?",
+        "options": ["0", "1", "2"]
     },
     {
         "text": "Wie is de mol?",
