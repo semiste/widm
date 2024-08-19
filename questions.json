@@ -1,47 +1,51 @@
 [
     {
-        "text": "Had de mol problemen met het vinden van het huis bij de opdracht \"Poppenkast\"?",
+        "text": "Heeft de mol truffels gegeten tijdens het spel?",
         "options": ["Ja", "Nee"]
     },
     {
-        "text": "Hoe oud is de mol?",
-        "options": ["24", "25", "26", "27+"]
+        "text": "Heeft de mol zijn licht uit gedaan tijdens de opdracht \"Vuurvliegjes\"?",
+        "options": ["Nee", "Ja, één keer", "Ja, meerdere keren"]
     },
     {
-        "text": "Heeft de mol boekjes gestolen?",
+        "text": "Hoeveelste kamer is de mol gekomen? (hoeveel puntjes ket) bij de opdracht \"Operatie: Kamer 10\"?",
+        "options": ["Kamer 1-2", "Kamer 3-4", "Kamer 5-6", "Kamer 7-9", "Kamer 10"]
+    },
+    {
+        "text": "Bij de opdracht \"Meten is weten\" zat de mol bij het groepje afstand of tijd?",
+        "options": ["Afstand", "Tijd"]
+    },
+    {
+        "text": "Heeft de mol op een slakje gestaan deze vakantie?",
+        "options": ["Nee", "Ja, 1", "Ja, meerdere"]
+    },
+    {
+        "text": "Had de mol een oranje voorwerp aan bij de opdracht \"Beetje fris\"?",
         "options": ["Ja", "Nee"]
     },
     {
-        "text": "Heeft de mol drugs meegenomen?",
-        "options": ["Nee", "Ja, maar valt wel mee", "Ja, echt 5 jaar celstraf"]
+        "text": "Had de mol het bovenste of het onderste touw bij de opdracht \"1000 eenden\"?",
+        "options": ["Bovenste", "Onderste"]
     },
     {
-        "text": "Heeft de mol gelogen over de waarde van zijn eendjes bij de opdracht \"1000 eenden\"?",
+        "text": "Welke gun had de mol tijdens de opdracht \"Operatie: Kamer 10\"?",
+        "options": ["De rode", "De gele", "De witte"]
+    },
+    {
+        "text": "Welke kleur had de mol tijdens het spel \"Vuurvliegjes\"?",
+        "options": ["Rood", "Blauw", "Groen"]
+    },
+    {
+        "text": "Was de mol als eerste of tweede aan de beurt bij de opdracht \"Poppenkast\"?",
+        "options": ["Eerste", "Tweede"]
+    },
+    {
+        "text": "Heeft de mol zijn kleur veranderd tijdens de opdracht \"Vuurvliegjes\"?",
         "options": ["Ja", "Nee"]
     },
     {
-        "text": "Hoe vaak is de mol nat geworden bij de opdracht \"1000 eenden\"?",
-        "options": ["Niet", "Éen keer", "Twee keer", "Meer dan twee keer"]
-    },
-    {
-        "text": "Hoeveel verschillen heeft de mol geraden bij de opdracht \"Poppenkast\"?",
-        "options": ["0", "1", "2", "3", "4+"]
-    },
-    {
-        "text": "Is er met een foto waarop de mol staat geld verloren bij de opdracht \"Volkstheater\"?",
+        "text": "Heeft de mol een leven gered tijdens de opdracht \"Operatie: Kamer 10\"?",
         "options": ["Ja", "Nee"]
-    },
-    {
-        "text": "Heeft de mol gekookt voor de groep?",
-        "options": ["Ja", "Nee"]
-    },
-    {
-        "text": "Had de mol een grote of kleine verrekijker bij de opdracht \"Poppenkast\"?",
-        "options": ["Grote", "Kleine"]
-    },
-    {
-        "text": "Heeft de mol een grote of een kleine penis?",
-        "options": ["Grote", "Kleine", "Het hangt er meer vanaf hoe je hem gebruikt"]
     },
     {
         "text": "Wie is de mol?",
