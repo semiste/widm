@@ -1,26 +1,55 @@
 [
     {
-        "text": "What is the capital of France?",
-        "options": ["Paris", "London", "Rome"]
+        "text": "Welke kleur had de mol tijdens de opdracht \"Ruimtevaarders\"?",
+        "options": ["Rood of oranje", "Licht of donker blauw", "Groen of geel", "Paars"]
     },
     {
-        "text": "Which planet is known as the Red Planet?",
-        "options": ["Mars", "Earth"]
+        "text": "Welke auto zat de mol op de heenweg?",
+        "options": ["Honda", "Tesla", "Zolestar"]
     },
     {
-        "text": "What is the largest ocean on Earth?",
-        "options": ["Pacific Ocean", "Atlantic Ocean", "Indian Ocean", "Arctic Ocean", "Atlanwtic Ocean", "Isan Ocean"]
+        "text": "Deed de mol zijn VR bril af tijdens de opdracht \"Ruimtevaarders\"?",
+        "options": ["Ja", "Nee"]
     },
     {
-        "text": "Who wrote 'To Kill a Mockingbird'?",
-        "options": ["Harper Lee", "Mark Twain", "J.K. Rowling", "Ernest Hemingway"]
+        "text": "Was de mol vergeten een sweater mee te nemen naar Bussang?",
+        "options": ["Ja", "Nee"]
     },
     {
-        "text": "What is the chemical symbol for water?",
-        "options": ["H222222222222222222222222222222222222222222222222222222222222222222222O", "O2", "CO2", "NaCl"]
+        "text": "Was de mol aan het smimimiën over zijn VR bril tijdens de opdracht \"Ruimtevaarders\"?",
+        "options": ["Nee", "Een beetje", "Ja, echt veel"]
     },
     {
-        "text": "Which is the largest mammal?",
-        "options": ["Blue Whale", "Elephant", "Giraffe", "Shark","Shaco"]
+        "text": "Hoeveel geld voor de pot pakte de Mol bij de opdracht \"Kaartenhuis\"?",
+        "options": ["Minder dan -1 euro", "Tussen de -1 en 0 euro", "Tussen de 0 en 1 euro", "Meer dan 1 euro"]
+    },
+    {
+        "text": "Als hoeveelste mocht de mol zijn slaapkamer kiezen?",
+        "options": ["Eerste", "Tweede", "Derde", "Vierde", "Vijfde", "Zesde", "Laatste"]
+    },
+    {
+        "text": "Pakte de mol een joker bij de opdracht \"Kaartenhuis\"?",
+        "options": ["Ja", "Nee"]
+    },
+    {
+        "text": "Liep de mol door tot het laatste station bij de opdracht \"Kaartenhuis\"?",
+        "options": ["Ja", "Nee"]
+    },
+    {
+        "text": "Wat drinkt de mol het meest?",
+        "options": ["Wijn", "Sappie", "Frisdrank", "Energy"]
+    },
+    {
+        "text": "Hoeveel spacelampen heeft de mol mee?",
+        "options": ["0", "1", "2"]
+    },
+    {
+        "text": "Wie is de mol?",
+        "options": ["Mitch", "Weissie", "Tony", "Thijs", "Pim", "Sietse", "Guy"]
+    },
+    {
+        "text": "Hoeveel jokers wil je inzetten?",
+        "options": ["0", "1", "2", "3", "4"]
     }
 ]
+
