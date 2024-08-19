@@ -1,46 +1,46 @@
 [
     {
-        "text": "Als hoeveelste koos de mol zijn meetinstrument bij de opdracht \"Meten is weten\"?",
-        "options": ["Eerste", "Tweede", "Derde"]
-    },
-    {
-        "text": "Ging de mol mee met het scouten / verkennen van de locaties?",
+        "text": "Was de mol kleurenblind bij de opdracht \"Fabels\"?",
         "options": ["Ja", "Nee"]
     },
     {
-        "text": "Bij de opdracht \"Volkstheater\" Is er geld verdiend met een foto waarop de mol staat?",
+        "text": "Waar woont de mol?",
+        "options": ["IJsselstein", "Nieuwegein", "Tilburg", "Utrecht", "Eindhoven"]
+    },
+    {
+        "text": "Had de mol een muts op bij de opdracht \"Beetje fris\"?",
+        "options": ["Nee", "Ja, één", "Ja, meerdere"]
+    },
+    {
+        "text": "Welke dieren kwamen voor in het verhaal van de mol bij de opdracht \"Fabels\"?",
+        "options": ["Leeuw en muis", "Kraai en vos", "Krekel en Mier", "Lam en Wolf", "Kikker en Os"]
+    },
+    {
+        "text": "Als hoeveelste ging de mol bij de opdracht \"Kaartenhuis\"?",
+        "options": ["1e of 2e", "3e of 4e", "5e of 6e", "Laatste"]
+    },
+    {
+        "text": "Is de mol een rascist?",
         "options": ["Ja", "Nee"]
     },
     {
-        "text": "Wat voor sokken Had de mol aan bij het ontbijt?",
-        "options": ["Geen", "Grijs, wit, of zwart", "Andere kleur"]
-    },
-    {
-        "text": "Heeft de mol geld verloren door hardop te tellen bij de opdracht \"Meten is weten\"?",
+        "text": "Heeft de mol zijn verhaal grotendeels vertaald bij de opdracht \"Fabels\"?",
         "options": ["Ja", "Nee"]
     },
     {
-        "text": "Hoe vaak heeft de mol switch geroepen bij de opdracht \"Meten is weten\"?",
-        "options": ["0-3 keer", "4-7 keer", "8-11 keer", "12-15 keer", "Meer dan 15 keer"]
-    },
-    {
-        "text": "Pakte de mol een joker bij de opdracht \"Ruimtevaarders\"?",
+        "text": "Is de mol eerder uitgestapt bij de opdracht \"Beetje fris\"?",
         "options": ["Ja", "Nee"]
     },
     {
-        "text": "Zat de mol bij de groep kiezen of raden bij de opdracht \"Volkstheater\"?",
-        "options": ["Kiezen (4 man)", "Raden (2 man)"]
-    },
-    {
-        "text": "Heeft de mol een vriendin?",
-        "options": ["Ja", "Nee", "Nee, maar wel een vriend"]
-    },
-    {
-        "text": "Heeft de mol een jointje gerookt tijdens de opdracht \"Meten is weten\"?",
+        "text": "Ging de mol mee op de wereldreis naar de supermarkt?",
         "options": ["Ja", "Nee"]
     },
     {
-        "text": "Heeft de mol met de hand jonko's gedraaid deze vakantie? (Zonder jonko3000)",
+        "text": "Heeft de mol iemand anders laten lijden bij de opdracht \"Beetje fris\"?",
+        "options": ["Ja", "Nee"]
+    },
+    {
+        "text": "Heeft de mol gezelschapsspellen meegenomen?",
         "options": ["Ja", "Nee"]
     },
     {
