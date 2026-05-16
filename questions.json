@@ -1,6 +1,6 @@
 [
     {
-        "text": "Heeft de mol truffels gegeten tijdens het spel?",
+        "text": "vraag 1",
         "options": ["Ja", "Nee"]
     },
     {
@@ -8,7 +8,7 @@
         "options": ["Nee", "Ja, één keer", "Ja, meerdere keren"]
     },
     {
-        "text": "Hoeveelste kamer is de mol gekomen? (hoeveel puntjes ket) bij de opdracht \"Operatie: Kamer 10\"?",
+        "text": "Hoeveelste kamer is de mol gekomen? bij de opdracht \"Operatie: Kamer 10\"?",
         "options": ["Kamer 1-2", "Kamer 3-4", "Kamer 5-6", "Kamer 7-9", "Kamer 10"]
     },
     {
@@ -16,7 +16,8 @@
         "options": ["Afstand", "Tijd"]
     },
     {
-        "text": "Heeft de mol op een slakje gestaan deze vakantie?",
+        "text": "Heeft de mol op een slak
+    gestaan deze vakantie?",
         "options": ["Nee", "Ja, 1", "Ja, meerdere"]
     },
     {
