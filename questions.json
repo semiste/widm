@@ -16,11 +16,6 @@
         "options": ["Afstand", "Tijd"]
     },
     {
-        "text": "Heeft de mol op een slak
-    gestaan deze vakantie?",
-        "options": ["Nee", "Ja, 1", "Ja, meerdere"]
-    },
-    {
         "text": "Had de mol een oranje voorwerp aan bij de opdracht \"Beetje fris\"?",
         "options": ["Ja", "Nee"]
     },
