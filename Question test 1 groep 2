@@ -1,0 +1,90 @@
+[
+    {
+        "text": "Is de mol een man of een vrouw?",
+        "options": ["man", "vrouw"]
+    },
+    {
+        "text": "Heeft het groepje van de mol ooit de meeste vragen goed gehad bij de pubquiz?",
+        "options": ["Nee", "Ja, één keer", "Ja, meerdere keren"]
+    },
+    {
+        "text": "Heeft de mol een spiegel gebruikt bij de opdracht laserpen?",
+        "options": ["Ja", "Nee"]
+    },
+    {
+        "text": "Mocht de mol mee bepalen in het verdelen van de groepjes bij de groepjesjacht?",
+        "options": ["Ja, als penningmeester", "Ja, als hulp", "Nee"]
+    },
+    {
+        "text": "Heeft de mol een laserpen bediend bij de opdracht Laserpen?",
+        "options": ["Ja", "Nee"]
+    },
+    {
+        "text": "Hoeveel jokerpartjes heeft de mol uiteindelijk gekregen bij de opdracht Jokerdilemma?",
+        "options": ["1", "2", "3", "4", "5", "6", "7", "8"]
+    },
+    {
+        "text": "Heeft de mol de finish bereikt bij de opdracht korte / lange plank?",
+        "options": ["Ja", "Nee"]
+    },
+    {
+        "text": "Als hoeveelste werd de contactadvertentie van de mol voorgelezen bij de contactadvertentieopdracht?",
+        "options": ["1e", "2e", "3e", "4e", "5e", "6e", "optie staat er niet tussen"]
+    },
+    {
+        "text": "Als hoeveelste werd de contactadvertentie van de mol voorgelezen bij de contactadvertentieopdracht?",
+        "options": ["7e", "8e", "9e", "10e", "11e", "12e", "optie staat er niet tussen"]
+    },
+    {
+        "text": "In welke plaats woont de mol?",
+        "options": ["Eerste", "Tweede"]
+    },
+    {
+        "text": "Op welke plek stond de mol uiteindelijk bij de opdracht Vind je plek?",
+        "options": ["Ja", "Nee"]
+    },
+    {
+        "text": "Hoeveel opdrachten heeft de mol gespeeld bij Minute to Win it?",
+        "options": ["1", "2", "3", "4", "5", "geen"]
+    },
+    {
+        "text": "Welke rol had de mol bij de GroepjesJacht?",
+        "options": ["Jager", "Verstopper"]
+    },
+    {
+        "text": "Hoeveel jokerpartjes heeft de mol gepakt bij de Rasterroute?",
+        "options": ["2", "4", "6", "8", "10", "geen"]
+    },
+    {
+        "text": "In welk groepje zat de mol als laatste bij de pubquiz?",
+        "options": ["1", "2", "3", "4", "5", "geen"]
+    },
+    {
+        "text": "Is de mol penningmeester?",
+        "options": ["Ja", "Nee"]
+    },
+    {
+        "text": "Is de Mol afgevallen bij de opdracht Rekenkamer?",
+        "options": ["Ja", "Nee"]
+    },
+    {
+        "text": "Welke mini opdracht heeft de mol gedaan bij het vinden van het middenpunt?",
+        "options": ["Lichaamscontrole", "Stalen zenuwen", "Hoog in de bol", "Presteren onder druk", "geen"]
+    },
+    {
+        "text": "Welk sterrenbeeld heeft de mol?",
+        "options": ["1", "2", "3", "4", "5", "geen"]
+    },
+    {
+        "text": "Welk kandidaat nummer had de mol bij de opdracht Vind je plek?",
+        "options": ["1", "2", "3", "4", "Optie staat er niet tussen"]
+    },
+    {
+        "text": "Welk kandidaat nummer had de mol bij de opdracht Vind je plek?",
+        "options": ["5", "6", "7", "8", "geen", "Optie staat er niet tussen"]
+    },
+    {
+        "text": "Wie is de mol?",
+        "options": ["Mitch", "Weissie", "Tony", "Thijs", "Pim", "Sietse", "Guy"]
+    }
+]
