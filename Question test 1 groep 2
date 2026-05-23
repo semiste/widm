@@ -28,11 +28,11 @@
         "options": ["Ja", "Nee"]
     },
     {
-        "text": "Als hoeveelste werd de contactadvertentie van de mol voorgelezen bij de contactadvertentieopdracht?",
+        "text": "Als hoeveelste werd de contactadvertentie van de mol voorgelezen bij de contactadvertentieopdracht? (1/2)",
         "options": ["1e", "2e", "3e", "4e", "5e", "6e", "optie staat er niet tussen"]
     },
     {
-        "text": "Als hoeveelste werd de contactadvertentie van de mol voorgelezen bij de contactadvertentieopdracht?",
+        "text": "Als hoeveelste werd de contactadvertentie van de mol voorgelezen bij de contactadvertentieopdracht? (2/2)",
         "options": ["7e", "8e", "9e", "10e", "11e", "12e", "optie staat er niet tussen"]
     },
     {
@@ -84,7 +84,11 @@
         "options": ["5", "6", "7", "8", "geen", "Optie staat er niet tussen"]
     },
     {
-        "text": "Wie is de mol?",
-        "options": ["Mitch", "Weissie", "Tony", "Thijs", "Pim", "Sietse", "Guy"]
+        "text": "Wie is de mol? (1/2)",
+        "options": ["Frits", "Sandra", "Arthur", "Joanna", "Mariska", "Chantal", "Optie staat er niet tussen"]
+    },
+    {
+        "text": "Wie is de mol? (2/2)",
+        "options": ["Kiek", "Anna", "Geert", "Koen", "Menno", "Vincent", "Optie staat er niet tussen"]
     }
 ]
