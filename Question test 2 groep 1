@@ -52,8 +52,8 @@
         "options": ["1", "2", "3", "4", "5", "geen"]
     },
     {
-        "text": "Wat was het eerste bij baantje van de mol?",
-        "options": ["Jager", "Verstopper"]
+        "text": "Wat was het eerste bijbaantje van de mol?",
+        "options": ["optie 1", "optie 2"]
     },
     {
         "text": "Hoeveel opdrachten heeft de mol gespeeld bij Minute to Win it?",
