@@ -1,0 +1,86 @@
+[
+    {
+        "text": "Is de mol een man of een vrouw?",
+        "options": ["man", "vrouw"]
+    },
+    {
+        "text": "Met wie voerde de mol een mini opdracht uit bij het vinden van het middenpunt?",
+        "options": ["Nee", "Ja, één keer", "Ja, meerdere keren"]
+    },
+    {
+        "text": "Welk kandidaat nummer had de mol bij de opdracht Vind je plek?",
+        "options": ["1", "2", "3", "4", "Optie staat er niet tussen"]
+    },
+    {
+        "text": "Welk kandidaat nummer had de mol bij de opdracht Vind je plek?",
+        "options": ["5", "6", "7", "8", "geen", "Optie staat er niet tussen"]
+    },
+    {
+        "text": "Welke code hoorde bij het groepje van de mol bij de Groepjesjacht?",
+        "options": ["Ja, als penningmeester", "Ja, als hulp", "Nee"]
+    },
+    {
+        "text": "Hoeveel nummer heeft de mol correct uitgebeeld bij de opdracht Muziek uitbeelden?",
+        "options": ["1", "2", "3", "4", "5", "geen"]
+    },
+    {
+        "text": "In welk groepje startte de mol bij de pubquiz?",
+        "options": ["1", "2", "3", "4", "5", "6", "7", "8"]
+    },
+    {
+        "text": "Heeft de mol met een plank in zijn of haar handen gehad bij de korte plank/lange plank opdracht?",
+        "options": ["Ja", "Nee"]
+    },
+    {
+        "text": "Hoeveel jokerpartjes heeft de mol weggegeven bij de opdracht Jokerdilema?",
+        "options": ["1e", "2e", "3e", "4e", "5e", "geen"]
+    },
+    {
+        "text": "In welke kamer begon de mol bij de opdracht Rekenkamer?",
+        "options": ["Rekenkamer", "Raadselkamer"]
+    },
+    {
+        "text": "Heeft de mol een opdracht beter uitgevoerd dan de andere groep bij de opdracht Minute to Win it?",
+        "options": ["Ja", "Nee"]
+    },
+    {
+        "text": "Welke rol had de mol bij de GroepjesJacht?",
+        "options": ["Jager", "Verstopper"]
+    },
+    {
+        "text": "Als hoeveelste werd de contactadvertentie van de mol voorgelezen bij de contactadvertentieopdracht?",
+        "options": ["1", "2", "3", "4", "5", "geen"]
+    },
+    {
+        "text": "Wat was het eerste bij baantje van de mol?",
+        "options": ["Jager", "Verstopper"]
+    },
+    {
+        "text": "Hoeveel opdrachten heeft de mol gespeeld bij Minute to Win it?",
+        "options": ["1", "2", "3", "4", "5", "geen"]
+    },
+    {
+        "text": "Hoeveel enveloppen heeft de mol gepakt bij de opdracht Rasterroute?",
+        "options": ["1", "2", "3", "4", "5", "geen"]
+    },
+    {
+        "text": "Als hoeveelste ging de mol muziek uitbeelden bij de opdracht muziek uitbeelden?",
+        "options": ["1e", "2e", "3e"]
+    },
+    {
+        "text": "Is de mol ooit buiten Europa op vakantie geweest?",
+        "options": ["Ja", "Nee"]
+    },
+    {
+        "text": "Op welke plek moest de mol staan bij de opdracht Vind je plek?",
+        "options": ["210", "212", "309", "313", "409", "411", "510", "512"]
+    },
+    {
+        "text": "Stond de mol op de juiste positie bij de opdracht Mastermind?",
+        "options": ["ja", "nee"]
+    },
+    {
+        "text": "Wie is de mol?",
+        "options": ["Mitch", "Weissie", "Tony", "Thijs", "Pim", "Sietse", "Guy"]
+    }
+]
