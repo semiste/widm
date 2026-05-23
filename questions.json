@@ -37,7 +37,7 @@
     },
     {
         "text": "In welke plaats woont de mol?",
-        "options": ["Eerste", "Tweede"]
+        "options": ["Almere", "Leusden", "Midden Beemster", "Teteringen", "Heiloo", "Epe", "Utrecht"]
     },
     {
         "text": "Op welke plek stond de mol uiteindelijk bij de opdracht Vind je plek?",
