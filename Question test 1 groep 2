@@ -73,7 +73,7 @@
     },
     {
         "text": "Welk sterrenbeeld heeft de mol?",
-        "options": ["1", "2", "3", "4", "5", "geen"]
+        "options": ["Vissen", "Weegschaal", "Boogschutter", "Tweeling", "Stier", "Leeuw", "Maagd"]
     },
     {
         "text": "Welk kandidaat nummer had de mol bij de opdracht Vind je plek?",
