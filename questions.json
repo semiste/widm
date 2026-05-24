@@ -77,10 +77,10 @@
     },
     {
         "text": "Wie is de mol? (1/2)",
-        "options": ["Linda", "Mark", "Alice", "Richard, "Eelco", "Pieter", "optie staat er niet tussen"]
+        "options": ["Linda", "Mark", "Alice", "Richard", "Eelco", "Pieter", "optie staat er niet tussen"]
     },
     {
         "text": "Wie is de mol? (2/2)",
-        "options": ["Adri", "Marco", "Carla", "Robin, "Imke", "Willemijn", "optie staat er niet tussen"]
+        "options": ["Adri", "Marco", "Carla", "Robin", "Imke", "Willemijn", "optie staat er niet tussen"]
     }
 ]
