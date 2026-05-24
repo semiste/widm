@@ -24,23 +24,19 @@
         "options": ["1", "2", "3", "4", "5", "geen"]
     },
     {
-        "text": "In welk groepje startte de mol bij de pubquiz?",
-        "options": ["1", "2", "3", "4", "5", "6", "7", "8"]
+        "text": "Viel de mol af bij de opdracht met het doolhof-raster?",
+        "options": ["ja", "nee"]
     },
     {
-        "text": "Heeft de mol met een plank in zijn of haar handen gehad bij de korte plank/lange plank opdracht?",
+        "text": "Heeft de groep van de mol het middenpunt goed bereikt?",
         "options": ["Ja", "Nee"]
-    },
-    {
-        "text": "Hoeveel jokerpartjes heeft de mol weggegeven bij de opdracht Jokerdilema?",
-        "options": ["1e", "2e", "3e", "4e", "5e", "geen"]
     },
     {
         "text": "In welke kamer begon de mol bij de opdracht Rekenkamer?",
         "options": ["Rekenkamer", "Raadselkamer"]
     },
     {
-        "text": "Heeft de mol een opdracht beter uitgevoerd dan de andere groep bij de opdracht Minute to Win it?",
+        "text": "Stond de mol op de juiste plek bij mastermind?",
         "options": ["Ja", "Nee"]
     },
     {
@@ -48,16 +44,12 @@
         "options": ["Jager", "Verstopper"]
     },
     {
-        "text": "Als hoeveelste werd de contactadvertentie van de mol voorgelezen bij de contactadvertentieopdracht?",
-        "options": ["1", "2", "3", "4", "5", "geen"]
+        "text": "Heeft de mol de vraag goed beantwoord bij de introquiz?",
+        "options": ["ja", "nee"]
     },
     {
         "text": "Wat was het eerste bijbaantje van de mol?",
         "options": ["optie 1", "optie 2"]
-    },
-    {
-        "text": "Hoeveel opdrachten heeft de mol gespeeld bij Minute to Win it?",
-        "options": ["1", "2", "3", "4", "5", "geen"]
     },
     {
         "text": "Hoeveel enveloppen heeft de mol gepakt bij de opdracht Rasterroute?",
@@ -76,8 +68,8 @@
         "options": ["210", "212", "309", "313", "409", "411", "510", "512"]
     },
     {
-        "text": "Stond de mol op de juiste positie bij de opdracht Mastermind?",
-        "options": ["ja", "nee"]
+        "text": "Hoeveel liedjes heeft de mol goed uitgebeeld bij de opdracht: liedjes uitbeelden?",
+        "options": ["0", "1", "2", "3", "4", "5"]
     },
     {
         "text": "Wie is de mol?",
