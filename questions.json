@@ -28,8 +28,8 @@
         "options": ["Almere", "Leusden", "Midden Beemster", "Teteringen", "Heiloo", "Epe", "Utrecht"]
     },
     {
-        "text": "Op welke plek stond de mol uiteindelijk bij de opdracht Vind je plek?",
-        "options": ["Ja", "Nee"]
+        "text": "Waar slaapt de mol?",
+        "options": ["Boven", "Benenden", "in een tent"]
     },
     {
         "text": "Is het team van de mol gevonden bij de Groepjesjacht?",
@@ -64,12 +64,8 @@
         "options": ["Vissen", "Weegschaal", "Maagd", "Kreeft", "Steenbok", "Waterman"]
     },
     {
-        "text": "Welk kandidaat nummer had de mol bij de opdracht Vind je plek?",
-        "options": ["1", "2", "3", "4", "Optie staat er niet tussen"]
-    },
-    {
-        "text": "Welk kandidaat nummer had de mol bij de opdracht Vind je plek?",
-        "options": ["5", "6", "7", "8", "geen", "Optie staat er niet tussen"]
+        "text": "Op welke rij zat de mol bij het opvoeren van de stukjes voor Eelco en Mariska vanaf het scherm gezien?",
+        "options": ["1", "2", "3", "4", "5", "6"]
     },
     {
         "text": "Welke code had het groepje van de mol bij de groepjesjacht?",
