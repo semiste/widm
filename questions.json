@@ -4,79 +4,59 @@
         "options": ["man", "vrouw"]
     },
     {
-        "text": "Hoeveel juiste foto's heeft de mol gemaakt bij het gedicht lezen",
-        "options": ["0", "1", "2", "de mol heeft geen foto's gemaakt"]
+        "text": "Welke mini opdracht deed de mol bij de middenpunt?",
+        "options": ["Hoog in je bol", "Stalen zenuwen", "Onder druk presteren", "Lichaamscontrole"]
     },
     {
-        "text": "Heeft de mol een laser gebruikt bij de laseropdracht?",
-        "options": ["Ja", "Nee"]
+        "text": "Welke code had het groepje van de mol bij de groepjesjacht?",
+        "options": ["68F3", "QC3C", "496B", "W2D9", "Z8T6", "P45A", "E51D"]
     },
     {
-        "text": "Mocht de mol mee bepalen in het verdelen van de groepjes bij de groepjesjacht?",
-        "options": ["Ja, als penningmeester", "Ja, als hulp", "Nee"]
+        "text": "Hoeveel nummer heeft de mol correct uitgebeeld bij de opdracht Muziek uitbeelden?",
+        "options": ["1", "2", "3", "4", "5", "geen"]
     },
     {
-        "text": "Stond de mol op de voor of achtergrond bij de groepsfoto?",
-        "options": ["voorgrond", "achtergrond"]
-    },
-    {
-        "text": "Heeft de mol het gedicht uit zijn of haar hoofd geleerd?",
-        "options": ["Ja", "Nee"]
-    },
-    {
-        "text": "In welke plaats woont de mol?",
-        "options": ["Almere", "Leusden", "Midden Beemster", "Teteringen", "Heiloo", "Epe", "Utrecht"]
-    },
-    {
-        "text": "Waar slaapt de mol?",
-        "options": ["Beneden", "Boven", "In een tent"]
-    },
-    {
-        "text": "Is het team van de mol gevonden bij de Groepjesjacht?",
+        "text": "Viel de mol af bij de opdracht met het doolhof-raster?",
         "options": ["ja", "nee"]
+    },
+    {
+        "text": "Heeft de groep van de mol het middenpunt goed bereikt?",
+        "options": ["Ja", "Nee"]
+    },
+    {
+        "text": "In welke kamer begon de mol bij de opdracht Rekenkamer?",
+        "options": ["Rekenkamer", "Raadselkamer"]
     },
     {
         "text": "Welke rol had de mol bij de GroepjesJacht?",
         "options": ["Jager", "Verstopper"]
     },
     {
-        "text": "Hoeveel jokerpartjes heeft de mol gepakt bij de Rasterroute?",
-        "options": ["2", "4", "6", "8", "10", "geen"]
-    },
-    {
-        "text": "Had de mol de vraag goed bij de introquiz?",
+        "text": "Heeft de mol de vraag goed beantwoord bij de introquiz?",
         "options": ["ja", "nee"]
     },
     {
-        "text": "Is de mol penningmeester?",
+        "text": "Wat was het eerste bijbaantje van de mol?",
+        "options": ["Training geven", "Glazenwasser", "Krantenwijk", "Waterleidingen Amsterdam", "Keuken bejaardetehuis", "Schoonmaker"]
+    },
+    {
+        "text": "Hoeveel enveloppen heeft de mol gepakt bij de opdracht Rasterroute?",
+        "options": ["1", "2", "3", "4", "5", "geen"]
+    },
+    {
+        "text": "Als hoeveelste ging de mol muziek uitbeelden bij de opdracht muziek uitbeelden van zijn groep?",
+        "options": ["1e", "2e", "3e"]
+    },
+    {
+        "text": "Is de mol ooit buiten Europa op vakantie geweest?",
         "options": ["Ja", "Nee"]
     },
     {
-        "text": "Is de Mol afgevallen bij de opdracht Rekenkamer?",
-        "options": ["Ja", "Nee"]
+        "text": "Hoeveel liedjes heeft de mol goed uitgebeeld bij de opdracht: liedjes uitbeelden?",
+        "options": ["0", "1", "2", "3", "4", "5"]
     },
     {
-        "text": "Welke mini opdracht heeft de mol gedaan bij het vinden van het middenpunt?",
-        "options": ["Lichaamscontrole", "Stalen zenuwen", "Hoog in de bol", "Presteren onder druk", "geen"]
-    },
-    {
-        "text": "Welk sterrenbeeld heeft de mol?",
-        "options": ["Vissen", "Weegschaal", "Boogschutter", "Tweeling", "Stier", "Leeuw", "Maagd"]
-    },
-    {
-        "text": "Op welke rij zat de mol tijdens de stukjes voor Eelco en Mariska gezien vanaf het scherm?",
-        "options": ["1", "2", "3", "4", "5", "6"]
-    },
-    {
-        "text": "Welke code had het groepje van de mol bij de groepjesjacht?",
-        "options": ["68F3", "QC3C", "496B", "W2D9", "Z8T6", "P45A", "E51D"]
-     },
-    {
-        "text": "Wie is de mol? (1/2)",
-        "options": ["Frits", "Sandra", "Arthur", "Joanna", "Mariska", "Chantal", "Optie staat er niet tussen"]
-    },
-    {
-        "text": "Wie is de mol? (2/2)",
-        "options": ["Kiek", "Anna", "Geert", "Koen", "Menno", "Vincent", "Optie staat er niet tussen"]
+        "text": "Wie is de mol?",
+        "options": ["Eelco", "Robin", "Linda", "Menno", "Mariska", "Kiek"]
     }
 ]
