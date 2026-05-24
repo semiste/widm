@@ -29,7 +29,7 @@
     },
     {
         "text": "Waar slaapt de mol?",
-        "options": ["Boven", "Benenden", "in een tent"]
+        "options": ["Beneden", "Boven", "In een tent"]
     },
     {
         "text": "Is het team van de mol gevonden bij de Groepjesjacht?",
@@ -61,22 +61,22 @@
     },
     {
         "text": "Welk sterrenbeeld heeft de mol?",
-        "options": ["Vissen", "Weegschaal", "Maagd", "Kreeft", "Steenbok", "Waterman"]
+        "options": ["Vissen", "Weegschaal", "Boogschutter", "Tweeling", "Stier", "Leeuw", "Maagd"]
     },
     {
-        "text": "Op welke rij zat de mol bij het opvoeren van de stukjes voor Eelco en Mariska vanaf het scherm gezien?",
+        "text": "Op welke rij zat de mol tijdens de stukjes voor Eelco en Mariska gezien vanaf het scherm?",
         "options": ["1", "2", "3", "4", "5", "6"]
     },
     {
         "text": "Welke code had het groepje van de mol bij de groepjesjacht?",
         "options": ["68F3", "QC3C", "496B", "W2D9", "Z8T6", "P45A", "E51D"]
-    },
+     },
     {
         "text": "Wie is de mol? (1/2)",
-        "options": ["Linda", "Mark", "Alice", "Richard", "Eelco", "Pieter", "optie staat er niet tussen"]
+        "options": ["Frits", "Sandra", "Arthur", "Joanna", "Mariska", "Chantal", "Optie staat er niet tussen"]
     },
     {
         "text": "Wie is de mol? (2/2)",
-        "options": ["Adri", "Marco", "Carla", "Robin", "Imke", "Willemijn", "optie staat er niet tussen"]
+        "options": ["Kiek", "Anna", "Geert", "Koen", "Menno", "Vincent", "Optie staat er niet tussen"]
     }
 ]
