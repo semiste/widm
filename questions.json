@@ -4,11 +4,11 @@
         "options": ["man", "vrouw"]
     },
     {
-        "text": "Heeft het groepje van de mol ooit de meeste vragen goed gehad bij de pubquiz?",
-        "options": ["Nee", "Ja, één keer", "Ja, meerdere keren"]
+        "text": Hoeveel juiste foto's heeft de mol gemaakt bij het gedicht lezen",
+        "options": ["0", "1", "2"]
     },
     {
-        "text": "Heeft de mol een spiegel gebruikt bij de opdracht laserpen?",
+        "text": "Heeft de mol een laser gebruikt bij de laseropdracht?",
         "options": ["Ja", "Nee"]
     },
     {
@@ -16,24 +16,12 @@
         "options": ["Ja, als penningmeester", "Ja, als hulp", "Nee"]
     },
     {
-        "text": "Heeft de mol een laserpen bediend bij de opdracht Laserpen?",
+        "text": "Stond de mol op de voor of achtergrond bij de groepsfoto?",
+        "options": ["voorgrond", "achtergrond"]
+    },
+    {
+        "text": "Heeft de mol het gedicht uit zijn of haar hoofd geleerd?",
         "options": ["Ja", "Nee"]
-    },
-    {
-        "text": "Hoeveel jokerpartjes heeft de mol uiteindelijk gekregen bij de opdracht Jokerdilemma?",
-        "options": ["1", "2", "3", "4", "5", "6", "7", "Geen"]
-    },
-    {
-        "text": "Heeft de mol de finish bereikt bij de opdracht korte / lange plank?",
-        "options": ["Ja", "Nee"]
-    },
-    {
-        "text": "Als hoeveelste werd de contactadvertentie van de mol voorgelezen bij de contactadvertentieopdracht? (1/2)",
-        "options": ["1e", "2e", "3e", "4e", "5e", "6e", "optie staat er niet tussen"]
-    },
-    {
-        "text": "Als hoeveelste werd de contactadvertentie van de mol voorgelezen bij de contactadvertentieopdracht? (2/2)",
-        "options": ["7e", "8e", "9e", "10e", "11e", "12e", "optie staat er niet tussen"]
     },
     {
         "text": "In welke plaats woont de mol?",
@@ -44,8 +32,8 @@
         "options": ["Ja", "Nee"]
     },
     {
-        "text": "Hoeveel opdrachten heeft de mol gespeeld bij Minute to Win it?",
-        "options": ["1", "2", "3", "4", "5", "geen"]
+        "text": "Is het team van de mol gevonden bij de Groepjesjacht?",
+        "options": ["ja", "nee"]
     },
     {
         "text": "Welke rol had de mol bij de GroepjesJacht?",
@@ -56,8 +44,8 @@
         "options": ["2", "4", "6", "8", "10", "geen"]
     },
     {
-        "text": "In welk groepje zat de mol als laatste bij de pubquiz?",
-        "options": ["1", "2", "3", "4", "5", "geen"]
+        "text": "Had de mol de vraag goed bij de introquiz?",
+        "options": ["ja", "nee"]
     },
     {
         "text": "Is de mol penningmeester?",
@@ -81,6 +69,10 @@
     },
     {
         "text": "Welk kandidaat nummer had de mol bij de opdracht Vind je plek?",
+        "options": ["5", "6", "7", "8", "geen", "Optie staat er niet tussen"]
+    },
+    {
+        "text": "Welke code had het groepje van de mol bij de groepjesjacht?",
         "options": ["5", "6", "7", "8", "geen", "Optie staat er niet tussen"]
     },
     {
